@@ -1,0 +1,47 @@
+﻿@model AmiamStore.Models.Product
+@{
+    ViewBag.Title = "ProductDetails";
+    Layout = "~/Views/Share/MasterPage.cshtml";
+}
+<div></div> <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+<h2>ProductDetails</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    
+    <dl class="dl-horizontal">
+        @{
+            var data = ViewBag.Message;
+        }
+
+        <dt>
+         Name =  @data.ProductName
+        </dt>
+
+        <dd>
+           Price = @data.ProductPrice
+        </dd>
+
+        <dt>
+           Description = @data.ProductDescription
+        </dt>
+
+        <dd>
+            <img width="300px" height="300px" src="\Images\Products\@data.ProductImage">
+        </dd>
+
+        <dt>
+           ShipperID = @data.ShipperID
+        </dt>
+
+        <dd>
+           ProductID =  @data.ProductID
+        </dd>
+
+    </dl>
+</div>
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

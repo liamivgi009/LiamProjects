@@ -1,0 +1,52 @@
+﻿*{margin:0;padding:0;}
+.body{text-align:center;
+      font-family:sans-serif;
+}
+.form {
+    margin-top: 100px;
+    margin-bottom: 2%;
+    height: 480px;
+}
+.in1{margin-bottom:40px;
+     padding:10px 0;
+}
+.box h1 {
+    margin: 0 0 40px;
+    padding: 0;
+    color: #3b120d;
+    margin-top: 120px;
+    text-transform: uppercase;
+}
+.box input, 
+.box textarea
+{
+    width:25%;
+    box-sizing:border-box;
+    box-shadow:none;
+    outline:none;
+    border:none;
+    border-bottom:2px solid #999
+}
+.box textarea
+{
+    margin-bottom:20px;
+}
+.Submit {
+    height: 50px;
+    width: 50px;
+    border-bottom: none;
+    cursor: pointer;
+    background-color: #3b120d;
+    color: #fff;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+.lineMasterRegister {
+    position:absolute;
+    background-image: url('../Images/Point.png');
+    background-repeat: repeat-x;
+    background-position: center center;
+    margin-left: 27%;
+    margin-top: -3.3%;
+    width: 1300px;
+}

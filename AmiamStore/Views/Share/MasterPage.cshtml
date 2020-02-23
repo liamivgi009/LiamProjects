@@ -1,0 +1,80 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="https://kit.fontawesome.com/feb67790c5.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Styles/MasterPageStyle.css" rel="stylesheet" />
+</head>
+<body class="body">
+        <div class="div1">
+            <div class="menu">
+                <a class="li1" href="../Home/HomePage" style="text-decoration:none"><span>עמוד הבית</span></a><i class="fas fa-circle"></i>
+                <a class="li1" href="../ProfessionalClothing/ProfessionalClothingPage" style="text-decoration:none"><span>ביגוד מקצועי</span></a><i class="fas fa-circle"></i>
+                <a class="li1" href="../SafteyProducts/SafteyProductsPage" style="text-decoration:none"><span>מוצרי בטיחות</span></a><i class="fas fa-circle"></i>
+                <a class="li1" href="../WorkGloves/WorkGlovesPage" style="text-decoration:none"><span>כפפות עבודה</span></a><i class="fas fa-circle"></i>
+                <a class="li1" href="../SafteyAndWorkShoes/SafteyAndWorkShoesPage" style="text-decoration:none"><span>נעלי עבודה ובטיחות</span></a><i class="fas fa-circle"></i>
+                <a class="li1" href="../ContactUs/ContactUsPage" style="text-decoration:none"><span>צור קשר</span></a>  <i class="fas fa-circle"></i>
+            </div>
+            <span class="logo">
+                <a href="/Home/HomePage">
+                    <img src="../../Images/logo.png" />
+                </a>
+            </span>
+            <div class="SerchBox">
+                <input type="text" placeholder="חיפוש" class="serch-txt" />
+                <a class="serch-btn" href="#" style="text-decoration:none">
+                    <i class="fas fa-search"></i>
+                </a>
+            </div>
+        </div>
+        <div class="div2">
+            <a href="../ShoppingCart/ShoppingCartPage" class="shoppingCart" style="text-decoration:none">
+                <i class="fas fa-shopping-cart"></i>
+                <span>סל קניות</span>
+            </a>
+            <a href="~/Login/LoginPage" class="loginIcon" style="text-decoration:none">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>התחבר</span>
+            </a>
+            <a href="~/Register/Register" class="RegisterIcon" style="text-decoration:none">
+                <i class="fas fa-user-plus"></i>
+                <span>הרשמה</span>
+            </a>
+        </div>
+    <div class="RenderBody">
+        @RenderBody()
+    </div>
+    <footer class="footer">
+        <div class="detailsFooter">
+            <form action="" method="post" class="formBox">
+                <h1 class="contactNowFooter">:צור קשר </h1>
+                <input class="inputFooter" type="tel" placeholder="טלפון" />
+                <input class="inputFooter" type="text" placeholder="חברה" />
+                <input class="inputFooter" type="text" placeholder="שם" />
+                <br />
+                <button type="button" class="butFooter"> שלח הודעה</button>
+            </form>
+            <div class="CompanyDetails">
+
+                <span class="blueWord"> להצעת מחיר</span>
+                <br />
+                מחירים מיוחדים
+                <br />
+                למכירה סיטונאית
+                <br />
+                יריב 054-7788-383
+                <br />
+                ליבנת 054-7788-381
+                <br />
+                amiam1@inter.net.il
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
