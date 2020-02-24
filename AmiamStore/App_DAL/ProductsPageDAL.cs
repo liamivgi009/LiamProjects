@@ -7,7 +7,7 @@ namespace AmiamStore.App_DAL
 {
     public class ProductsPageDAL
     {
-        public DataTable getProductByCatagorie(String CatagoryID)
+        public DataTable getProductByCatagorie(int CatagoryID)
         {
             DBHelper dbh = new DBHelper();
             String sql =

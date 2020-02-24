@@ -14,7 +14,7 @@ namespace AmiamStore.App_BLL
         public Product getProduct(String id)
         {
            ProductDAL dal = new ProductDAL();
-           DataTable dt = dal.getProduct(id);
+           DataTable dt = dal.getProduct("1");
 
             // converting from a DataTable to a Product Object!
             Product prod = new Product();

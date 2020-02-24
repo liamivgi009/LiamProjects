@@ -9,10 +9,10 @@ namespace AmiamStore.App_BLL
 {
     public class ProductsPageBLL
     {
-        public ProductsPage getProduct(String CatagoryID)
+        public ProductsPage getProductsByCata(int CatagoryID)
         {
             ProductsPageDAL dal = new ProductsPageDAL();
-            DataTable dt = dal.getProductByCatagorie("1");
+            DataTable dt = dal.getProductByCatagorie(1);
 
             // converting from a DataTable to a Product Object!
             ProductsPage prodByCatagory = new ProductsPage();
