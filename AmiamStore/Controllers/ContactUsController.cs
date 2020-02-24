@@ -8,6 +8,7 @@ namespace AmiamStore.Controllers
 {
     public class ContactUsController : Controller
     {
+        string s = "1";
         // GET: ContactUs
         public ActionResult ContactUsPage()
         {
