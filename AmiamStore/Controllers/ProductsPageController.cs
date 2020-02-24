@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace AmiamStore.Controllers
 {
-    public class ProfessionalClothingController : Controller
+    public class ProductsPageController : Controller
     {
-        // GET: ProfessionalClothing
-        public ActionResult ProfessionalClothingPage()
+        // GET: SpacifitProduct
+        public ActionResult ProductsPage()
         {
             return View();
         }
