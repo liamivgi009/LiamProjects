@@ -166,9 +166,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_BLL\ProductBLL.cs" />
+    <Compile Include="App_BLL\ProductsPageBLL.cs" />
     <Compile Include="App_DAL\AmiamDB.cs" />
     <Compile Include="App_DAL\DBHelper.cs" />
     <Compile Include="App_DAL\ProductDAL.cs" />
+    <Compile Include="App_DAL\ProductsPageDAL.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -183,6 +185,7 @@
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\LoginUser.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductsPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,20 @@
-﻿
+﻿@model AmiamStore.Models.ProductsPage
 @{
     ViewBag.Title = "ProductsPage";
     Layout = "~/Views/Share/MasterPage.cshtml";
 }
+@{
+    var data = ViewBag.Message;
+}
+<dt>
+    Name =  @data.ProductName
+</dt>
+
+<dd>
+    Price = @data.ProductPrice
+</dd>
+<dd>
+    <img width="300px" height="300px" src="\Images\@data.ProductImage">
+</dd>
 
 
