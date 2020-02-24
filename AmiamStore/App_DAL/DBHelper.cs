@@ -12,10 +12,12 @@ namespace AmiamStore.App_DAL
         OleDbConnection connection;
         OleDbCommand command;
         OleDbDataReader dataReader;
-        String connString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source = ~\App_Data\AmiamStore.accdb;";
 
         public DBHelper()
         {
+            string connString = ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString;
+            connString += HttpContext.Current.Server.MapPath(@"~/App_Data/AmiamStore.accdb"); 
+        
             connection = new OleDbConnection(connString);  
             command = new OleDbCommand();
             command.Connection = connection;
