@@ -11,7 +11,6 @@
 
 .img {
     width: 200px;
-    height: 200px;
     margin-top: 5%;
 }
 .h2{
@@ -32,9 +31,8 @@
 }
 .Product1 {
     display: inline-block;
-    width: 211px;
     background-color: white;
-    height: 357px;
+    height: 400px;
     margin-top: 3%;
     margin-left: 3%;
 }
@@ -80,8 +78,6 @@
 }
 .SecondLine{
     margin-bottom:2%;
-}
-.FirstLine{
 }
 .addToShoppingCart {
     margin-top: -7%;

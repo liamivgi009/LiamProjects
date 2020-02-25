@@ -8,6 +8,10 @@ namespace AmiamStore.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult Index()
+        {
+            return RedirectToAction("HomePage");
+        }
         // GET: Home
         public ActionResult HomePage()
         {

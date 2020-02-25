@@ -1,20 +1,54 @@
-﻿@model AmiamStore.Models.ProductsPage
+﻿@model AmiamStore.Models.ProductsPageModel
 @{
     ViewBag.Title = "ProductsPage";
     Layout = "~/Views/Share/MasterPage.cshtml";
 }
-@{
-    var data = ViewBag.Message;
-}
-<dt>
-    Name =  @data.ProductName
-</dt>
+<link href="~/Styles/SafteyProductsStyle.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<div class="MainSafteyPage">
+    <span class="h1SafteyProducts">
+        :קטגורית בגדי עבודה, ביגוד מקצועי לעבודה
+    </span>
+    <br />
+    <div class="h2">
+        בקטגורית בגדי עבודה, ביגוד מקצועי לעבודה ניתן לראות מגוון רחב של בגדי עבודה. ניתן לבצע הזמנה של בגדי עבודה בכל כמות ולכל רחבי הארץ. כל מוצרי
+        <br />
+    </div>
+    <span class="h2Part2Saftey">
+        .כבגדי עבודה, ביגוד מקצועי לעבודה הם בעלויות יבואן
+    </span>
+    <div class="safteyProducts">
+        <div class="Product1">
+            @foreach (var product in Model.Products)
+            {
+                <a href="/ProductDetails/ProductDetails/@product.ProductID"><img class="img" style="width:300px" src="\Images\@product.ProductImage"></a>
+                <div class="horizontal_dotted_line"></div>
+                <div class="starRating">
+                    <input type="radio" name="star" class="star" /><label class="label" for="star"></label>
+                    <input type="radio" name="star" class="star" /><label class="label" for="star2"></label>
+                    <input type="radio" name="star" class="star" /><label class="label" for="star3"></label>
+                    <input type="radio" name="star" class="star" /><label class="label" for="star4"></label>
+                    <input type="radio" name="star" class="star" /><label class="label" for="star5"></label>
 
-<dd>
-    Price = @data.ProductPrice
-</dd>
-<dd>
-    <img width="300px" height="300px" src="\Images\@data.ProductImage">
-</dd>
-
-
+                </div>
+                <div class="ProductTitle">
+                    @product.ProductName
+                </div>
+                <br />
+                <div class="ProductPrice">
+                    ₪@product.ProductPrice
+                </div>
+                <div class="addToShoppingCart">
+                    <button class="ShoppingButProduct1">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="text">הוספה לסל</span>
+                    </button>
+                </div>
+                <br />
+            }
+        </div>
+        </div>
+    </div>
+<div class="lineMaster">
+    <img class="imageLogo" src="~/Images/footer-logoWhite.png" />
+</div>

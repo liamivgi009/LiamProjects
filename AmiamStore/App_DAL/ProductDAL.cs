@@ -8,7 +8,7 @@ namespace AmiamStore.App_DAL
 {
     public class ProductDAL
     {
-        public DataTable getProduct(String id)
+        public DataTable getProduct(int id)
         {
             DBHelper dbh = new DBHelper();
             String sql =

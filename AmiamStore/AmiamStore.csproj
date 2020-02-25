@@ -140,7 +140,7 @@
     <Content Include="Images\Products\WorkGlovesImages\AntiColdWorkGloves.png" />
     <Content Include="Images\Products\WorkGlovesImages\BlackNitrileWorkGlo.png" />
     <Content Include="Images\Products\WorkGlovesImages\ClothClothWorkGloves.png" />
-    <Content Include="Images\Products\WorkGlovesImages\ClothedWorkGloves1.png" />
+    <Content Include="Images\Products\WorkGlovesImages\ClothedWorkGloves.png" />
     <Content Include="Images\Products\WorkGlovesImages\OrganizationWorkGloves.png" />
     <Content Include="Images\Products\WorkGlovesImages\ReinforcedGreenHouseholdWorkGloves.png" />
     <Content Include="Images\Products\WorkGlovesImages\ReinforcedWeldingWorkGloves.png" />
@@ -169,6 +169,7 @@
     <Compile Include="App_BLL\ProductsPageBLL.cs" />
     <Compile Include="App_DAL\AmiamDB.cs" />
     <Compile Include="App_DAL\DBHelper.cs" />
+    <Compile Include="App_DAL\Entities\Product.cs" />
     <Compile Include="App_DAL\ProductDAL.cs" />
     <Compile Include="App_DAL\ProductsPageDAL.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -184,8 +185,8 @@
     </Compile>
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\LoginUser.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ProductsPage.cs" />
+    <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\ProductsPageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

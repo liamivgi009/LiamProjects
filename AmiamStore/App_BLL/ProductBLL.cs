@@ -6,15 +6,16 @@ using System.Data;
 using AmiamStore.Models;
 using AmiamStore.App_BLL;
 using AmiamStore.App_DAL;
+using AmiamStore.App_DAL.Entities;
 
 namespace AmiamStore.App_BLL
 {
     public class ProductBLL
     {
-        public Product getProduct(String id)
+        public Product getProduct(int id)
         {
            ProductDAL dal = new ProductDAL();
-           DataTable dt = dal.getProduct("1");
+           DataTable dt = dal.getProduct(id);
 
             // converting from a DataTable to a Product Object!
             Product prod = new Product();
