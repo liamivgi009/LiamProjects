@@ -13,13 +13,12 @@ namespace AmiamStore.Controllers
     public class ProductsPageController : Controller
     {
         private ProductsPageBLL _productsService = new ProductsPageBLL();
-
         // GET: SpacifitProduct
         public ActionResult ProductsPage(int id)
         {
             var products = _productsService.GetProductsByCata(id);
             var model = GetModel(products);
-           
+            //var catagoryName = model.CatagoryName;
             return View(model);
         }
 
