@@ -113,6 +113,7 @@
     <Content Include="Images\CatagoriesNavigitionSafteyProducts.jpg" />
     <Content Include="Images\Products\SafteyProductsImages\ChemicalResistantOveralls.jpg" />
     <Content Include="Images\Products\SafteyProductsImages\DisposableBeardCover.jpg" />
+    <Content Include="Images\Products\SafteyProductsImages\DisposableLabHat.jpg" />
     <Content Include="Images\Products\SafteyProductsImages\DoubleBranchReliever.jpg" />
     <Content Include="Images\FirstLine.png" />
     <Content Include="Images\footer-logoWhite.png" />
