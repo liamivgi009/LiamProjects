@@ -1,6 +1,5 @@
 ﻿using AmiamStore.App_BLL;
 using AmiamStore.App_DAL;
-using AmiamStore.App_DAL.Entities;
 using AmiamStore.Models;
 using System;
 using System.Collections.Generic;
@@ -17,19 +16,21 @@ namespace AmiamStore.Controllers
         public ActionResult ProductsPage(int id)
         {
             var products = _productsService.GetProductsByCata(id);
-            var model = GetModel(products);
-            //var catagoryName = model.CatagoryName;
+            ProductsPageModel model = GetModel(products.Products);
             return View(model);
         }
 
-        private ProductsPageModel GetModel(List<Product> products)
+        private ProductsPageModel GetModel(List<ProductModel> products)
         {
             ProductsPageModel model = new ProductsPageModel();
+            string CDescrip = "";
             model.Products = new List<ProductModel>();
             foreach (var product in products)
             {
-                model.Products.Add(new ProductModel() { ProductID = product.ProductID, ProductName = product.ProductName, ProductImage = product.ProductImage, ProductPrice = product.ProductPrice });
+                CDescrip = product.CatagoryDescription;
+                model.Products.Add(new ProductModel() { ProductID = product.ProductID, ProductName = product.ProductName, ProductImage = product.ProductImage, ProductPrice = product.ProductPrice , CatagoryDescription = product.CatagoryDescription});
             }
+            model.CatagoryDescription = CDescrip;
             return model;
         }
 

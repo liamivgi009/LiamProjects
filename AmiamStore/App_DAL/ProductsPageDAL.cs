@@ -11,11 +11,12 @@ namespace AmiamStore.App_DAL
         {
             DBHelper dbh = new DBHelper();
             String sql =
-                @"  SELECT        p.ProductName, p.ProductImage, p.ProductPrice, p.ProductDescription, p.ShipperID, p.ProductID
-                     FROM            (ProductCatagories pc INNER JOIN
+               @"  SELECT        p.ProductName, p.ProductImage, p.ProductPrice, p.ProductDescription, p.ShipperID, p.ProductID ,h.CatagoryDescription
+                     FROM            ((ProductCatagories pc INNER JOIN
                      Product p ON p.ProductID = pc.ProductID)
-                     WHERE        pc.CatagoryID = " + catagoryID;
-
+                     INNER JOIN  Catagories h
+                      on pc.CatagoryID = h.CatagoryID)
+                     WHERE        pc.CatagoryID =" + catagoryID;
             DataTable dt = dbh.GetData(sql);
             return dt;
         }

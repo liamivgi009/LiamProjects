@@ -4,23 +4,24 @@ using System.Linq;
 using System.Web;
 using System.Data;
 using AmiamStore.App_DAL;
-using AmiamStore.App_DAL.Entities;
+using AmiamStore.Models;
 
 namespace AmiamStore.App_BLL
 {
     public class ProductsPageBLL
     {
-        public List<Product> GetProductsByCata(int catagoryID)
+        public ProductsPageModel GetProductsByCata(int catagoryID)
         {
             ProductsPageDAL dal = new ProductsPageDAL();
             DataTable dt = dal.getProductByCatagorie(catagoryID);
 
             // converting from a DataTable to a Product Object!
-
-            List<Product> products = new List<Product>();
+            ProductsPageModel d = new ProductsPageModel();
+            string CDescription = "";
+            List<ProductModel> products = new List<ProductModel>();
             foreach (DataRow dr in dt.Rows)
             {
-                Product product = new Product();
+                ProductModel product = new ProductModel();
                 product.ProductID = (int)dr["ProductID"];
                 product.ProductName = dr["ProductName"].ToString();
                 product.ProductImage = dr["ProductImage"].ToString();
@@ -28,8 +29,12 @@ namespace AmiamStore.App_BLL
                 product.ShipperID = dr["ShipperID"].ToString();
                 product.ProductDescription = dr["ProductDescription"].ToString();
                 products.Add(product);
+                product.CatagoryDescription = dr["CatagoryDescription"].ToString();
+                CDescription = product.CatagoryDescription;
             }
-            return products;
+            d.Products = products;
+            d.CatagoryDescription = CDescription;
+            return d;
         }
 
         //public IEnumerable<Product> getProductsByCata(int catagoryID)

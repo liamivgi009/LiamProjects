@@ -13,5 +13,6 @@ namespace AmiamStore.Models
         public string ProductPrice{ get; set; }
         public string ProductDescription { get; set; }
         public string ShipperID { get; set; }
+        public string CatagoryDescription { get; set; }
     }
 }

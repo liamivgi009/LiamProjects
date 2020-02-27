@@ -1,7 +1,6 @@
 ﻿using AmiamStore.Models;
 using System.Web.Mvc;
 using AmiamStore.App_BLL;
-using AmiamStore.App_DAL.Entities;
 
 namespace AmiamStore.Controllers
 {
@@ -11,7 +10,7 @@ namespace AmiamStore.Controllers
         public ActionResult ProductDetails(int id)
         {
             ProductBLL bll = new ProductBLL();
-            Product prod = bll.getProduct(id);
+            ProductModel prod = bll.getProduct(id);
             ViewBag.Message = prod;
             return View();
         }

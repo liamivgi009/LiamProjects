@@ -170,7 +170,6 @@
     <Compile Include="App_BLL\ProductsPageBLL.cs" />
     <Compile Include="App_DAL\AmiamDB.cs" />
     <Compile Include="App_DAL\DBHelper.cs" />
-    <Compile Include="App_DAL\Entities\Product.cs" />
     <Compile Include="App_DAL\ProductDAL.cs" />
     <Compile Include="App_DAL\ProductsPageDAL.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
