@@ -166,10 +166,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_BLL\LoginBLL.cs" />
     <Compile Include="App_BLL\ProductBLL.cs" />
     <Compile Include="App_BLL\ProductsPageBLL.cs" />
     <Compile Include="App_DAL\AmiamDB.cs" />
     <Compile Include="App_DAL\DBHelper.cs" />
+    <Compile Include="App_DAL\LoginDAL.cs" />
     <Compile Include="App_DAL\ProductDAL.cs" />
     <Compile Include="App_DAL\ProductsPageDAL.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
