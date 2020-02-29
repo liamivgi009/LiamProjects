@@ -10,21 +10,37 @@ namespace AmiamStore.App_BLL
 {
     public class LoginBLL
     {
-        public List<Login> GetProductsByCata()
+        public List<User> GetUsers()
         {
             LoginDAL dal = new LoginDAL();
             DataTable dt = dal.GetUsersData();
 
             // converting from a DataTable to a Product Object!
-            List<Login> Users = new List<Login>();
+            List<User> listUsers = new List<User>();
             foreach (DataRow dr in dt.Rows)
             {
-                Login d = new Login();
+                User d = new User();
                 d.UserName = dr["UserName"].ToString();
                 d.Password = dr["Password"].ToString();
-                Users.Add(d);
+                d.UserType = (int)dr["UserType"];
+                listUsers.Add(d);
             }
-            return Users;
+            return listUsers;
         }
+
+        public User GetSingleUser(string userName, string password)
+        {
+            var users = GetUsers();
+            try
+            {
+                return users.Single(u => u.UserName == userName && u.Password == password);
+            }
+            catch
+            {
+                throw new Exception("Error on getting user. Error Number: 57853");
+            }
+
+        }
+
     }
 }

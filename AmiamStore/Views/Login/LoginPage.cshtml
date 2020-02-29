@@ -1,4 +1,4 @@
-﻿@model AmiamStore.Models.Login
+﻿@model AmiamStore.Models.User
 @{
     ViewBag.Title = "LoginPage";
     Layout = "~/Views/Share/MasterPage.cshtml";
@@ -9,15 +9,19 @@
     <main class="mainLogin">
         <div class="login-box">
             <h1>Login</h1>
-            <div class="textbox">
-                <i class="fas fa-user"></i>
-                <input type="text" placeholder="UserName" name="" value="" />
-            </div>
-            <div class="textbox">
-                <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Password" name="" value="" />   
-            </div>
-            <input type="button" name="" value="LogIn" class="btn" />
+            @using (Html.BeginForm("LoginPage", "Login"))
+            {
+                <div class="textbox">
+                    <i class="fas fa-user"></i>
+                    @Html.TextBoxFor(m => m.UserName, new { placeholder = "UserName" })
+                </div>
+                <div class="textbox">
+                    <i class="fas fa-lock"></i>
+                    @Html.PasswordFor(m => m.Password)
+                </div>
+                <input type="submit" value="LogIn" class="btn" />
+            }
+
         </div>
     </main>
 </div>

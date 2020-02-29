@@ -7,9 +7,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AmiamStore.Models
 {
-    public class Login
+    public class User
     {
         public string UserName { get; set; }
         public string Password { get; set; }
+        public int UserType { get; set; }
     }
 }

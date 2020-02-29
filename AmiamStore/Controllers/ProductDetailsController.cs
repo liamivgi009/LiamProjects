@@ -1,11 +1,13 @@
 ﻿using AmiamStore.Models;
 using System.Web.Mvc;
 using AmiamStore.App_BLL;
+using AmiamStore.Controllers.BaseControllers;
 
 namespace AmiamStore.Controllers
 {
-    public class ProductDetailsController : Controller
+    public class ProductDetailsController : BaseController
     {
+        public ProductDetailsController() : base(UserType.Manager) { }
         // GET: ProductDetails
         public ActionResult ProductDetails(int id)
         {

@@ -1,6 +1,7 @@
 ﻿
 @{
     Layout = null;
+
 }
 
 <!DOCTYPE html>
@@ -12,32 +13,35 @@
     <link href="~/Styles/MasterPageStyle.css" rel="stylesheet" />
 </head>
 <body class="body">
-        <div class="div1">
-            <div class="menu">
-                <a class="li1" href="/Home/HomePage" style="text-decoration:none"><span>עמוד הבית</span></a><i class="fas fa-circle"></i>
-                @Html.ActionLink("ביגוד מקצועי", "ProductsPage", "ProductsPage", new { id = 1 }, new { style = "text-decoration:none", @class = "li1" })<i class="fas fa-circle"></i>
-                @Html.ActionLink("מוצרי בטיחות", "ProductsPage", "ProductsPage", new { id = 2 }, new { style = "text-decoration:none", @class = "li1" })<i class="fas fa-circle"></i>
-                @Html.ActionLink("כפפות עבודה", "ProductsPage", "ProductsPage", new { id = 3 }, new { style = "text-decoration:none", @class = "li1" })<i class="fas fa-circle"></i>
-                @Html.ActionLink("נעלי עבודה ובטיחות", "ProductsPage", "ProductsPage", new { id = 4 }, new { style = "text-decoration:none", @class = "li1" })<i class="fas fa-circle"></i>
-                <a class="li1" href="/ContactUs/ContactUsPage" style="text-decoration:none"><span>צור קשר</span></a>  <i class="fas fa-circle"></i>
-            </div>
-            <span class="logo">
-                <a href="/Home/HomePage">
-                    <img src="../../Images/logo.png" />
-                </a>
-            </span>
-            <div class="SerchBox">
-                <input type="text" placeholder="חיפוש" class="serch-txt" />
-                <a class="serch-btn" href="#" style="text-decoration:none">
-                    <i class="fas fa-search"></i>
-                </a>
-            </div>
+    @{ var currentUser = Html.GetCurrentUser(); }
+    <div class="div1">
+        <div class="menu">
+            <a class="li1" href="/Home/HomePage" style="text-decoration:none"><span>עמוד הבית</span></a><i class="fas fa-circle"></i>
+            @Html.ActionLink("ביגוד מקצועי", "ProductsPage", "ProductsPage", new { id = 1 }, new { style = "text-decoration:none", @class = "li1" })<i class="fas fa-circle"></i>
+            @Html.ActionLink("מוצרי בטיחות", "ProductsPage", "ProductsPage", new { id = 2 }, new { style = "text-decoration:none", @class = "li1" })<i class="fas fa-circle"></i>
+            @Html.ActionLink("כפפות עבודה", "ProductsPage", "ProductsPage", new { id = 3 }, new { style = "text-decoration:none", @class = "li1" })<i class="fas fa-circle"></i>
+            @Html.ActionLink("נעלי עבודה ובטיחות", "ProductsPage", "ProductsPage", new { id = 4 }, new { style = "text-decoration:none", @class = "li1" })<i class="fas fa-circle"></i>
+            <a class="li1" href="/ContactUs/ContactUsPage" style="text-decoration:none"><span>צור קשר</span></a>  <i class="fas fa-circle"></i>
         </div>
-        <div class="div2">
-            <a href="../ShoppingCart/ShoppingCartPage" class="shoppingCart" style="text-decoration:none">
-                <i class="fas fa-shopping-cart"></i>
-                <span>סל קניות</span>
+        <span class="logo">
+            <a href="/Home/HomePage">
+                <img src="../../Images/logo.png" />
             </a>
+        </span>
+        <div class="SerchBox">
+            <input type="text" placeholder="חיפוש" class="serch-txt" />
+            <a class="serch-btn" href="#" style="text-decoration:none">
+                <i class="fas fa-search"></i>
+            </a>
+        </div>
+    </div>
+    <div class="div2">
+        <a href="../ShoppingCart/ShoppingCartPage" class="shoppingCart" style="text-decoration:none">
+            <i class="fas fa-shopping-cart"></i>
+            <span>סל קניות</span>
+        </a>
+        @if (currentUser == null)
+        {
             <a href="~/Login/LoginPage" class="loginIcon" style="text-decoration:none">
                 <i class="fas fa-sign-in-alt"></i>
                 <span>התחבר</span>
@@ -46,7 +50,17 @@
                 <i class="fas fa-user-plus"></i>
                 <span>הרשמה</span>
             </a>
-        </div>
+        }
+
+
+        @if (currentUser != null)
+        {
+            <a href="~/Login/Logout" class="RegisterIcon" style="text-decoration:none">
+                <i class="fas fa-user-plus"></i>
+                <span>התנתק</span>
+            </a>
+        }
+    </div>
     <div class="RenderBody">
         @RenderBody()
     </div>
