@@ -17,13 +17,9 @@
                
                 <a href="/ProductDetails/ProductDetails/@product.ProductID"><img class="img" style="width:300px" src="\Images\@product.ProductImage"></a>
                 <div class="horizontal_dotted_line"></div>
-                @if (currentUser.UserType == AmiamStore.App_BLL.UserType.Manager)
+                @if ( currentUser != null && currentUser.UserType == AmiamStore.App_BLL.UserType.Manager)
                 {
                     <button type="submit" class="EditBut">עריכה</button>
-                }
-                else if(currentUser != null && currentUser.UserType == AmiamStore.App_BLL.UserType.Guest || currentUser.UserType == AmiamStore.App_BLL.UserType.Client)
-                {
-                    
                 }
                 <div class="starRating">
                     <input type="radio" name="star" class="star" /><label class="label" for="star"></label>
