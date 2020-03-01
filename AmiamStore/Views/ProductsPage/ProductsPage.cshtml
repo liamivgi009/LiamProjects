@@ -14,15 +14,23 @@
         @foreach (var product in Model.Products)
         {
             <div class="Product1">
+               
                 <a href="/ProductDetails/ProductDetails/@product.ProductID"><img class="img" style="width:300px" src="\Images\@product.ProductImage"></a>
                 <div class="horizontal_dotted_line"></div>
+                @if (currentUser.UserType == AmiamStore.App_BLL.UserType.Manager)
+                {
+                    <button type="submit" class="EditBut">עריכה</button>
+                }
+                else if(currentUser != null && currentUser.UserType == AmiamStore.App_BLL.UserType.Guest || currentUser.UserType == AmiamStore.App_BLL.UserType.Client)
+                {
+                    
+                }
                 <div class="starRating">
                     <input type="radio" name="star" class="star" /><label class="label" for="star"></label>
                     <input type="radio" name="star" class="star" /><label class="label" for="star2"></label>
                     <input type="radio" name="star" class="star" /><label class="label" for="star3"></label>
                     <input type="radio" name="star" class="star" /><label class="label" for="star4"></label>
                     <input type="radio" name="star" class="star" /><label class="label" for="star5"></label>
-
                 </div>
                 <div class="ProductTitle">
                     @product.ProductName
@@ -35,11 +43,6 @@
                     <button class="ShoppingButProduct1">
                         <i class="fas fa-shopping-bag"></i>
                         <span class="text">הוספה לסל</span>
-                        @if (currentUser.UserType == AmiamStore.App_BLL.UserType.Manager)
-                        {
-                            <span class="text">עריכה</span>
-                        }
-
                     </button>
                 </div>
                 <br />

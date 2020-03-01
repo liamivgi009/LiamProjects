@@ -18,6 +18,18 @@
     font-size:25px;
     padding-top:1%;
 }
+.EditBut{
+    transition-duration: 0.4s;
+    width: 75px;
+    height: 20px;
+    background-color: #ffffff;
+	float:left;
+	display:inline-block;
+	margin-top:2%;
+}
+.EditBut:hover{
+	 color: red;
+}
 .h2Part2 {
     margin-left: 31%;
     font-size: 20px;

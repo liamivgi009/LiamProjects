@@ -20,7 +20,10 @@ namespace AmiamStore.Controllers
             return View();
 
         }
-
+        public ActionResult Logout()
+        {
+            return View();
+        }
         // GET: LoginPage
         [HttpPost]
         public ActionResult LoginPage(User acc)
@@ -39,6 +42,11 @@ namespace AmiamStore.Controllers
 
 
 
+        }
+        public ActionResult Logout(User acc)
+        {
+            Session.Abandon();
+            return View();
         }
     }
 }

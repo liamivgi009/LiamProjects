@@ -1,5 +1,6 @@
 ﻿using AmiamStore.App_BLL;
 using AmiamStore.App_DAL;
+using AmiamStore.Controllers.BaseControllers;
 using AmiamStore.Models;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,9 @@ using System.Web.Mvc;
 
 namespace AmiamStore.Controllers
 {
-    public class ProductsPageController : Controller
+    public class ProductsPageController : BaseController
     {
+        public ProductsPageController() : base(false) { }
         private ProductsPageBLL _productsService = new ProductsPageBLL();
         // GET: SpacifitProduct
         public ActionResult ProductsPage(int id)
