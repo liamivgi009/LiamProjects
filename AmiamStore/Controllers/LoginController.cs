@@ -12,6 +12,8 @@ namespace AmiamStore.Controllers
 {
     public class LoginController : BaseController
     {
+        private readonly LoginBLL _loginService = new LoginBLL();
+
         public LoginController() : base(false) { }
 
         [HttpGet]
@@ -20,33 +22,34 @@ namespace AmiamStore.Controllers
             return View();
 
         }
-        public ActionResult Logout()
-        {
-            return View();
-        }
+
         // GET: LoginPage
         [HttpPost]
-        public ActionResult LoginPage(User acc)
+        public ActionResult LoginPage(LoginModel model)
         {
-            LoginBLL model = new LoginBLL();
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             try
             {
-                var user = model.GetSingleUser(acc.UserName, acc.Password);
-                AuthenticationManager.SaveUser(user.UserName, user.UserType);
+                var user = _loginService.GetSingleUser(model.UserName, model.Password);
+                AuthenticationManager.SaveUser(user.Username, model.Password, user.UserType);
                 return RedirectToAction("Index", "Home");
             }
             catch
             {
+                model.Message = "Username or password are not correct.";
                 return View(model);
             }
 
 
 
         }
-        public ActionResult Logout(User acc)
+        public ActionResult Logout()
         {
             Session.Abandon();
-            return View();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -167,12 +167,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_BLL\AuthenticationManager.cs" />
+    <Compile Include="App_BLL\Entities\Customer.cs" />
+    <Compile Include="App_BLL\Entities\User.cs" />
     <Compile Include="App_BLL\LoginBLL.cs" />
     <Compile Include="App_BLL\ProductBLL.cs" />
     <Compile Include="App_BLL\ProductsPageBLL.cs" />
+    <Compile Include="App_BLL\RegistrationService.cs" />
     <Compile Include="App_DAL\AmiamDB.cs" />
+    <Compile Include="App_DAL\CustomersRepository.cs" />
     <Compile Include="App_DAL\DBHelper.cs" />
-    <Compile Include="App_DAL\LoginDAL.cs" />
+    <Compile Include="App_DAL\UsersRepository.cs" />
     <Compile Include="App_DAL\ProductDAL.cs" />
     <Compile Include="App_DAL\ProductsPageDAL.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -188,8 +192,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\HtmlHelpers.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\LoginUser.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\ProductsPageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

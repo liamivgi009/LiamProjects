@@ -9,28 +9,60 @@ namespace AmiamStore.App_DAL
 {
     public class DBHelper
     {
-        OleDbConnection connection;
-        OleDbCommand command;
-        OleDbDataReader dataReader;
+        private readonly string _connectionString;
 
         public DBHelper()
         {
             string connString = ConfigurationManager.ConnectionStrings["myConnectionString"].ConnectionString;
-            connString += HttpContext.Current.Server.MapPath(@"~/App_Data/AmiamStore.accdb"); 
-        
-            connection = new OleDbConnection(connString);  
-            command = new OleDbCommand();
-            command.Connection = connection;
-             
+            connString += HttpContext.Current.Server.MapPath(@"~/App_Data/AmiamStore.accdb");
+            _connectionString = connString;
+
+
+        }
+
+        public void ExecuteNonQuery(string query)
+        {
+            OleDbConnection connection = null;
+            OleDbCommand command = null;
+            try
+            {
+                connection = new OleDbConnection(_connectionString);
+                command = new OleDbCommand
+                {
+                    CommandText = query,
+                    Connection = connection
+                };
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Dispose();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
+
+            }
         }
 
         public DataTable GetData(string sql)
         {
-            command.CommandText = sql;
+            OleDbConnection connection=null;
+            OleDbCommand command=null;
+ 
+            OleDbDataReader dataReader;
+
             var dataTable = new DataTable();
-            String output = "";
             try
             {
+                connection = new OleDbConnection(_connectionString);
+                command = new OleDbCommand();
+                command.CommandText = sql;
+                command.Connection = connection;
                 connection.Open();
                 dataReader = command.ExecuteReader();
 
@@ -43,7 +75,15 @@ namespace AmiamStore.App_DAL
             }
             finally
             {
-                this.connection.Close();
+                if (connection != null)
+                {
+                    connection.Dispose();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
+
             }
 
             return dataTable;

@@ -1,4 +1,4 @@
-﻿@model AmiamStore.Models.User
+﻿@model AmiamStore.Models.LoginModel
 @{
     ViewBag.Title = "LoginPage";
     Layout = "~/Views/Share/MasterPage.cshtml";
@@ -14,11 +14,21 @@
                 <div class="textbox">
                     <i class="fas fa-user"></i>
                     @Html.TextBoxFor(m => m.UserName, new { placeholder = "UserName" })
+                    @Html.ValidationMessageFor(m=>m.UserName)
                 </div>
                 <div class="textbox">
                     <i class="fas fa-lock"></i>
                     @Html.PasswordFor(m => m.Password, new { placeholder = "Password" })
+                    @Html.ValidationMessageFor(m => m.Password)
                 </div>
+
+                if (Model != null && !string.IsNullOrEmpty(Model.Message))
+                {
+                    <div>
+                        @Model.Message
+                    </div>
+                }
+
                 <input type="submit" value="LogIn" class="btn" />
             }
 

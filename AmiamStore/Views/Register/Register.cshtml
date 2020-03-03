@@ -1,4 +1,4 @@
-﻿
+﻿@model AmiamStore.Models.RegisterModel
 @{
     ViewBag.Title = "Register";
     Layout = "~/Views/Share/MasterPage.cshtml";
@@ -12,27 +12,37 @@
     <div class="box">
         <h1>:הרשמה לאתר</h1>
         <form method="post" class="form" action="">
+            @using (Html.BeginForm("Register", "Register", FormMethod.Post, new { @class = "form" }))
+            {
             <div class="div1">
-                <input placeholder="שם מלא" type="text" class="in1" />
+                @Html.TextBoxFor(m => m.Name, new { placeholder = "שם מלא", @class = "in1" })
+                @Html.ValidationMessageFor(m => m.Name)
                 <br />
             </div>
-            <div class="div1">
-                <input placeholder="שם החברה" type="text" class="in1" />
-                <br />
-            </div>
-            <div class="div1">
-                <input placeholder="אימייל" type="email" class="in1" />
-                <br />
-            </div>
-            <div class="div1">
-                <input placeholder="טלפון" type="tel" class="in1" />
-                <br />
-            </div>
-            <div class="div1">
-                <input placeholder="סיסמא" type="password" class="in1" />
-                <br />
-            </div>
-            <input class="Submit" type="submit" name="" value="Submit" />
+
+                <div class="div1">
+                    @Html.TextBoxFor(m => m.CompanyName, new { placeholder = "שם החברה", @class = "in1" })
+                    @Html.ValidationMessageFor(m => m.CompanyName)
+                    <br />
+                </div>
+                <div class="div1">
+                    @Html.TextBoxFor(m => m.Email, new { placeholder = "אימייל", @class = "in1" , type = "email"})
+                    @Html.ValidationMessageFor(m => m.Email)
+                    <br />
+                </div>
+                <div class="div1">
+                    @Html.TextBoxFor(m => m.Phone, new { placeholder = "טלפון", @class = "in1"})
+                    @Html.ValidationMessageFor(m => m.Phone)
+                    <br />
+                </div>
+                <div class="div1">
+                    @Html.PasswordFor(m => m.Password, new { placeholder = "סיסמא", @class = "in1" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                    <br />
+                </div>
+                <input class="Submit" type="submit" name="" value="שלח" />
+            }
+
         </form>
 
     </div>
