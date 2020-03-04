@@ -25,5 +25,7 @@ namespace AmiamStore.Models
 
         [Required(ErrorMessage = "{0} is mandatory.")]
         public string Password { get; set; }
+
+        public int CustomerID { get; set; }
     }
 }

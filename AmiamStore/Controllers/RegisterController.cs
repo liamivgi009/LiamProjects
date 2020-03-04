@@ -44,7 +44,8 @@ namespace AmiamStore.Controllers
                     CustomerCompanyName = model.CompanyName,
                     CustomerEmailAdress = model.Email,
                     CustomerName = model.Name,
-                    CustomerPhone = model.Phone
+                    CustomerPhone = model.Phone,
+                    CustomerID = model.CustomerID
                 };
                 _registrationService.Register(user, customer);
                 return RedirectToAction("LoginPage", "Login");
