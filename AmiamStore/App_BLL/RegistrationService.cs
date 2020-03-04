@@ -2,6 +2,7 @@
 using AmiamStore.App_DAL;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -15,9 +16,16 @@ namespace AmiamStore.App_BLL
 
         public void Register(User user, Customer customer)
         {
-            _usersRepository.Insert(user);
-            customer.UserID = _usersService.GetUserIdByUserName(user.Username);
-            _customersRepository.Insert(customer);
+            if(!_usersRepository.IfUserNameExcist(user))
+            {
+                _usersRepository.Insert(user);
+                customer.UserID = _usersService.GetUserIdByUserName(user.Username);
+                _customersRepository.Insert(customer);
+            }
+            else
+            {
+                throw new InvalidOperationException("The UserName is Taken.");
+            }
         }
     }
 }
