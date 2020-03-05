@@ -14,5 +14,6 @@ namespace AmiamStore.HtmlHelpers
             var manager = new AuthenticationManager();
             return manager.GetUser();
         }
+
     }
 }

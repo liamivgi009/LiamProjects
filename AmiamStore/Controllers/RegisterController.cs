@@ -52,7 +52,7 @@ namespace AmiamStore.Controllers
             }
             catch (Exception e)
             {
-                return View(model);
+                return View("../Error/UserNameError");
             }
 
 

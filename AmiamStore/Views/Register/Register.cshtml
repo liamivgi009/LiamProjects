@@ -15,28 +15,33 @@
             @using (Html.BeginForm("Register", "Register", FormMethod.Post, new { @class = "form" }))
             {
             <div class="div1">
-                @Html.TextBoxFor(m => m.Name, new { placeholder = "שם מלא", @class = "in1" })
+                @Html.Label(":שם מלא", new { @class = "label" })
+                @Html.TextBoxFor(m => m.Name, new {@class = "in1" })
                 @Html.ValidationMessageFor(m => m.Name)
                 <br />
             </div>
 
                 <div class="div1">
-                    @Html.TextBoxFor(m => m.CompanyName, new { placeholder = "שם החברה", @class = "in1" })
+                    @Html.Label(":שם החברה", new { @class = "label" })
+                    @Html.TextBoxFor(m => m.CompanyName, new { @class = "in1" })
                     @Html.ValidationMessageFor(m => m.CompanyName)
                     <br />
                 </div>
                 <div class="div1">
-                    @Html.TextBoxFor(m => m.Email, new { placeholder = "אימייל", @class = "in1" , type = "email"})
+                    @Html.Label(":אימייל", new { @class = "label" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "in1English" , type = "email"})
                     @Html.ValidationMessageFor(m => m.Email)
                     <br />
                 </div>
                 <div class="div1">
-                    @Html.TextBoxFor(m => m.Phone, new { placeholder = "טלפון", @class = "in1"})
+                    @Html.Label(":טלפון", new { @class = "label" })
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "in1"})
                     @Html.ValidationMessageFor(m => m.Phone)
                     <br />
                 </div>
                 <div class="div1">
-                    @Html.PasswordFor(m => m.Password, new { placeholder = "סיסמא", @class = "in1" })
+                    @Html.Label(":סיסמא", new { @class = "label" })
+                    @Html.PasswordFor(m => m.Password, new {@class = "in1" })
                     @Html.ValidationMessageFor(m => m.Password)
                     <br />
                 </div>
