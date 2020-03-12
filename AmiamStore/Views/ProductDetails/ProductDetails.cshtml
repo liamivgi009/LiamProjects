@@ -10,165 +10,212 @@
 @{
     var data = ViewBag.Message;
 }
-<div class="boxProduct">
-    <div class="ProductDetails">
-        <h1 class="titleLuminous">
-            @data.ProductName
-        </h1>
-        <span class="ProductPrice">
-            ₪@data.ProductPrice
-        </span>
-        <div class="addToShoppingCart">
-            <button class="ShoppingButProduct1">
-                <i class="fas fa-shopping-bag"></i>
-                <span class="text">הוספה לסל</span>
-            </button>
-        </div>
-        <div class="counter">
-            <div class="minus">-</div>
-            <input type="text" value="1" class="count" />
-            <div class="plus">+</div>
-        </div>
-        <div class="CatagoryTitle">
-            :קטגוריה
-        </div>
-        <a href="../SafteyProducts/SafteyProductsPage" class="Catagory">
-            מוצרי בטיחות
-        </a>
-        <div class="Description">
-            <div class="DescriptionTitle">
-                תיאור
-            </div>
-            <textarea class="inputDescription" rows="13" cols="70">
+@{ var currentUser = Html.GetCurrentUser();}
 
-                                                         @data.ProductDescription
- 
-        </textarea>
+@if (currentUser != null && currentUser.UserType == AmiamStore.App_BLL.UserType.Manager)
+{
+    <div class="boxProduct">
+        <div class="ProductDetails">
+            <textarea class="titleLuminous" rows="2" cols="10">@data.ProductName</textarea>
+            <textarea class="ProductPrice" rows="2" cols="5">
+                ₪@data.ProductPrice
+            </textarea>
+            <div class="addToShoppingCart">
+                <button class="ShoppingButProduct1">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="text">הוספה לסל</span>
+                </button>
+            </div>
+            <div class="counter">
+                <div class="minus">-</div>
+                <input type="text" value="1" class="count" />
+                <div class="plus">+</div>
+            </div>
+            <div class="CatagoryTitle">
+                :קטגוריה
+            </div>
+            <a href="../SafteyProducts/SafteyProductsPage" class="Catagory">
+                מוצרי בטיחות
+            </a>
+            <div class="Description">
+                <div class="DescriptionTitle">
+                    תיאור
+                </div>
+                <textarea class="inputDescription" rows="13" cols="70">
+
+                    @data.ProductDescription
+
+                </textarea>
+            </div>
+        </div>
+        <div class="ProductImage">
+            <img class="image" src="\Images\@data.ProductImage">
+        </div>
+        </div>
+}
+else
+{
+    <div class="boxProduct">
+        <div class="ProductDetails">
+            <h1 class="titleLuminous">
+                @data.ProductName
+            </h1>
+            <span class="ProductPrice">
+                ₪@data.ProductPrice
+            </span>
+            <div class="addToShoppingCart">
+                <button class="ShoppingButProduct1">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="text">הוספה לסל</span>
+                </button>
+            </div>
+            <div class="counter">
+                <div class="minus">-</div>
+                <input type="text" value="1" class="count" />
+                <div class="plus">+</div>
+            </div>
+            <div class="CatagoryTitle">
+                :קטגוריה
+            </div>
+            <a href="../SafteyProducts/SafteyProductsPage" class="Catagory">
+                מוצרי בטיחות
+            </a>
+            <div class="Description">
+                <div class="DescriptionTitle">
+                    תיאור
+                </div>
+                <textarea class="inputDescription" rows="13" cols="70">
+
+                    @data.ProductDescription
+
+                </textarea>
+            </div>
+        </div>
+        <div class="ProductImage">
+            <img class="image" src="\Images\@data.ProductImage">
         </div>
     </div>
-    <div class="ProductImage">
-        <img class="image" src="\Images\@data.ProductImage">
-    </div>
-    @*<div class="RelatedProducts">
-            <div class="RelatedProductsLine">
-                <h3 class="RelatedProductsTitle">
-                    :מוצרים קשורים
-                </h3>
-            </div>
-            <div class="Product">
-                <a href="../ProductPage/LuminousCoatPage">
-                    <img class="img" src="~/Images/SafteyProductsImages/LuminousCoatHomePage.JPEG" />
-                </a>
-                <div class="horizontal_dotted_line"></div>
-                <div class="starRating">
-                    <input type="radio" name="star" class="star" /><label class="label" for="star"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star2"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star3"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star4"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star5"></label>
+}
+       
+        @*<div class="RelatedProducts">
+                <div class="RelatedProductsLine">
+                    <h3 class="RelatedProductsTitle">
+                        :מוצרים קשורים
+                    </h3>
+                </div>
+                <div class="Product">
+                    <a href="../ProductPage/LuminousCoatPage">
+                        <img class="img" src="~/Images/SafteyProductsImages/LuminousCoatHomePage.JPEG" />
+                    </a>
+                    <div class="horizontal_dotted_line"></div>
+                    <div class="starRating">
+                        <input type="radio" name="star" class="star" /><label class="label" for="star"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star2"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star3"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star4"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star5"></label>
 
+                    </div>
+                    <div class="ProductTitle">
+                        מעיל זוהר
+                    </div>
+                    <br />
+                    <div class="ProductPrice">
+                        ₪280
+                    </div>
+                    <div class="addToShoppingCart">
+                        <button class="ShoppingButProduct1">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="text">הוספה לסל</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="ProductTitle">
-                    מעיל זוהר
-                </div>
-                <br />
-                <div class="ProductPrice">
-                    ₪280
-                </div>
-                <div class="addToShoppingCart">
-                    <button class="ShoppingButProduct1">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span class="text">הוספה לסל</span>
-                    </button>
-                </div>
-            </div>
-            <div class="Product">
-                <a href="../ProductPage/ChemicalResistantOverallsPage">
-                    <img class="img" src="~/Images/SafteyProductsImages/ChemicalResistantOveralls.jpg" />
-                </a>
-                <div class="horizontal_dotted_line"></div>
-                <div class="starRating">
-                    <input type="radio" name="star" class="star" /><label class="label" for="star"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star2"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star3"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star4"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star5"></label>
+                <div class="Product">
+                    <a href="../ProductPage/ChemicalResistantOverallsPage">
+                        <img class="img" src="~/Images/SafteyProductsImages/ChemicalResistantOveralls.jpg" />
+                    </a>
+                    <div class="horizontal_dotted_line"></div>
+                    <div class="starRating">
+                        <input type="radio" name="star" class="star" /><label class="label" for="star"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star2"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star3"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star4"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star5"></label>
 
+                    </div>
+                    <div class="ProductTitle">
+                        סרבל עמיד לכימיקלים
+                    </div>
+                    <br />
+                    <div class="ProductPrice">
+                        ₪22
+                    </div>
+                    <div class="addToShoppingCart">
+                        <button class="ShoppingButProduct1">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="text">הוספה לסל</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="ProductTitle">
-                    סרבל עמיד לכימיקלים
-                </div>
-                <br />
-                <div class="ProductPrice">
-                    ₪22
-                </div>
-                <div class="addToShoppingCart">
-                    <button class="ShoppingButProduct1">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span class="text">הוספה לסל</span>
-                    </button>
-                </div>
-            </div>
-            <div class="Product">
-                <a href="../ProductPage/ReflectsTransparentShieldPage">
-                    <img class="img" src="~/Images/SafteyProductsImages/ReflectsTransparentShield.jpg" />
-                </a>
-                <div class="horizontal_dotted_line"></div>
-                <div class="starRating">
-                    <input type="radio" name="star" class="star" /><label class="label" for="star"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star2"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star3"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star4"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star5"></label>
+                <div class="Product">
+                    <a href="../ProductPage/ReflectsTransparentShieldPage">
+                        <img class="img" src="~/Images/SafteyProductsImages/ReflectsTransparentShield.jpg" />
+                    </a>
+                    <div class="horizontal_dotted_line"></div>
+                    <div class="starRating">
+                        <input type="radio" name="star" class="star" /><label class="label" for="star"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star2"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star3"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star4"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star5"></label>
 
+                    </div>
+                    <div class="ProductTitle">
+                        משקף מגן שקוף
+                    </div>
+                    <br />
+                    <div class="ProductPrice">
+                        ₪25
+                    </div>
+                    <div class="addToShoppingCart">
+                        <button class="ShoppingButProduct1">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="text">הוספה לסל</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="ProductTitle">
-                    משקף מגן שקוף
-                </div>
-                <br />
-                <div class="ProductPrice">
-                    ₪25
-                </div>
-                <div class="addToShoppingCart">
-                    <button class="ShoppingButProduct1">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span class="text">הוספה לסל</span>
-                    </button>
-                </div>
-            </div>
-            <div class="Product">
-                <a href="../ProductPage/DisposableBeardCoverPage">
-                    <img class="img" src="~/Images/SafteyProductsImages/DisposableBeardCover.jpg" />
-                </a>
-                <div class="horizontal_dotted_line"></div>
-                <div class="starRating">
-                    <input type="radio" name="star" class="star" /><label class="label" for="star"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star2"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star3"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star4"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star5"></label>
+                <div class="Product">
+                    <a href="../ProductPage/DisposableBeardCoverPage">
+                        <img class="img" src="~/Images/SafteyProductsImages/DisposableBeardCover.jpg" />
+                    </a>
+                    <div class="horizontal_dotted_line"></div>
+                    <div class="starRating">
+                        <input type="radio" name="star" class="star" /><label class="label" for="star"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star2"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star3"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star4"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star5"></label>
 
+                    </div>
+                    <div class="ProductTitle">
+                        כיסוי זקן חד פעמי
+                    </div>
+                    <br />
+                    <div class="ProductPrice">
+                        ₪85
+                    </div>
+                    <div class="addToShoppingCart">
+                        <button class="ShoppingButProduct1">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="text">הוספה לסל</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="ProductTitle">
-                    כיסוי זקן חד פעמי
-                </div>
-                <br />
-                <div class="ProductPrice">
-                    ₪85
-                </div>
-                <div class="addToShoppingCart">
-                    <button class="ShoppingButProduct1">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span class="text">הוספה לסל</span>
-                    </button>
-                </div>
-            </div>
-        </div>*@
-</div>
-<div class="lineMaster">
-    <img class="imageLogo" src="~/Images/footer-logoWhite.png" />
-</div>
-@*<p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>*@
+            </div>*@
+        <div class="lineMaster">
+            <img class="imageLogo" src="~/Images/footer-logoWhite.png" />
+        </div>
+        @*<p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>*@

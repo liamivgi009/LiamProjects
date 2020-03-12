@@ -10,11 +10,13 @@ namespace AmiamStore.Controllers.BaseControllers
     public class BaseController : Controller
     {
         private readonly bool _requireAuthentication;
-        private readonly UserType? _userType=null;
+        private readonly UserType? _userType = null;
 
         private readonly AuthenticationManager _authenticationManager = new AuthenticationManager();
-        protected AuthenticationManager AuthenticationManager {
-            get {
+        protected AuthenticationManager AuthenticationManager
+        {
+            get
+            {
                 return _authenticationManager;
             }
         }
@@ -27,7 +29,7 @@ namespace AmiamStore.Controllers.BaseControllers
         {
             _requireAuthentication = requireAuthentication;
         }
-        protected BaseController():this(true)
+        protected BaseController() : this(true)
         {
         }
 
@@ -37,10 +39,6 @@ namespace AmiamStore.Controllers.BaseControllers
             if (currentUser == null && _requireAuthentication)
             {
                 Response.Redirect("/Login/LoginPage");
-            }
-            if (_userType.HasValue && _userType.Value != currentUser.UserType)
-            {
-                throw new Exception("Not allowd to perform action.");
             }
             base.OnActionExecuting(filterContext);
         }

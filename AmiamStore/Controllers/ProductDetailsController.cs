@@ -7,7 +7,7 @@ namespace AmiamStore.Controllers
 {
     public class ProductDetailsController : BaseController
     {
-        public ProductDetailsController() : base(UserType.Manager) { }
+        public ProductDetailsController() : base(UserType.Client) { }
         // GET: ProductDetails
         public ActionResult ProductDetails(int id)
         {
