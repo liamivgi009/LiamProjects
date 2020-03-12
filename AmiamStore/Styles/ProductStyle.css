@@ -114,14 +114,10 @@
     padding-left:30%;
 }
 .ShoppingButProduct1 {
-    transition-duration: 0.4s;
-    width: 150px;
-    height: 40px;
-    background-color: #ffffff;
+  color:black;
 }
 .ShoppingButProduct1:hover {
-    color: red;
-    border: solid red 1px;
+
 }
 .text {
     color: red;

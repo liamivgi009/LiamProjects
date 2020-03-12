@@ -13,33 +13,34 @@
     <div class="safteyProducts">
         @foreach (var product in Model.Products)
         {
-            <div class="Product1">
-               
-                <a href="/ProductDetails/ProductDetails/@product.ProductID"><img class="img" style="width:300px" src="\Images\@product.ProductImage"></a>
-                <div class="horizontal_dotted_line"></div>
-                <div class="starRating">
-                    <input type="radio" name="star" class="star" /><label class="label" for="star"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star2"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star3"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star4"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star5"></label>
-                </div>
-                <div class="ProductTitle">
-                    @product.ProductName
-                </div>
-                <br />
-                <div class="ProductPrice">
-                    ₪@product.ProductPrice
-                </div>
-                <div class="addToShoppingCart">
-                    <button class="ShoppingButProduct1">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span class="text">הוספה לסל</span>
-                    </button>
-                </div>
-                <br />
+        <div class="Product1">
 
+            <a href="/ProductDetails/ProductDetails/@product.ProductID"><img class="img" style="width:300px" src="\Images\@product.ProductImage"></a>
+            <div class="horizontal_dotted_line"></div>
+            <div class="starRating">
+                <input type="radio" name="star" class="star" /><label class="label" for="star"></label>
+                <input type="radio" name="star" class="star" /><label class="label" for="star2"></label>
+                <input type="radio" name="star" class="star" /><label class="label" for="star3"></label>
+                <input type="radio" name="star" class="star" /><label class="label" for="star4"></label>
+                <input type="radio" name="star" class="star" /><label class="label" for="star5"></label>
             </div>
+            <div class="ProductTitle">
+                @product.ProductName
+            </div>
+            <br />
+            <div class="ProductPrice">
+                ₪@product.ProductPrice
+            </div>
+            @*@*<div class="addToShoppingCart">
+                <button class="ShoppingButProduct1">
+                    <span class="text">הוספה לסל</span>
+                </button>
+            </div>*@
+            <i class="fas fa-shopping-bag"></i>
+            @Html.ActionLink("הוספה לסל", "OrderNow", "ShoppingCart", new { id = product.ProductID , @class = "ShoppingB" }, null)
+            <br />
+
+        </div>
         }
     </div>
     </div>

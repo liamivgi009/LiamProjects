@@ -11,15 +11,22 @@
 }
 .body{text-align:center;}
 .loginIcon{display:inline-block;margin-left:10px;color:black;}
-.shoppingCart{display:inline-block;color:black;}
-.div2{margin-top:-60px;
-      margin-left:-430px;
+.Shoop{color:black;}
+.div2 {
+    margin-top: -60px;
+    margin-left: -430px;
 }
 .li1{margin-left:15px;color:black;
      width:150px;
      height:150px
 }
-.button{margin-left:-20px;}
+.shoppingCart{
+    color:black;
+    display:inline-block
+}
+.button {
+    margin-left: -20px;
+}
 .SerchBox {
     position: absolute;
     left: 36%;

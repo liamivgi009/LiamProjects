@@ -163,6 +163,7 @@
     <Content Include="Styles\ProductStyle.css" />
     <Content Include="Styles\Register.css" />
     <Content Include="Styles\SafteyProductsStyle.css" />
+    <Content Include="Styles\ShoppingCartStyle.css" />
     <Content Include="Styles\style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -190,10 +191,12 @@
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ShareController.cs" />
     <Compile Include="Controllers\ProductsPageController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HtmlHelpers\HtmlHelpers.cs" />
+    <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
@@ -211,6 +214,7 @@
     <Content Include="Views\ProductDetails\ProductDetails.cshtml" />
     <Content Include="Views\ProductsPage\ProductsPage.cshtml" />
     <Content Include="Views\Error\UserNameError.cshtml" />
+    <Content Include="Views\ShoppingCart\CartView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,4 +1,4 @@
-﻿
+﻿@using AmiamStore.Models;
 @{
     Layout = null;
 
@@ -14,6 +14,9 @@
 </head>
 <body class="body">
     @{ var currentUser = Html.GetCurrentUser(); }
+    @{
+        var data = ViewBag.Message;
+    }
     <div class="div1">
         <div class="menu">
             <a class="li1" href="/Home/Index" style="text-decoration:none"><span>עמוד הבית</span></a><i class="fas fa-circle"></i>
@@ -36,10 +39,12 @@
         </div>
     </div>
     <div class="div2">
-        <a href="../ShoppingCart/ShoppingCartPage" class="shoppingCart" style="text-decoration:none">
-            <i class="fas fa-shopping-cart"></i>
-            <span>סל קניות</span>
-        </a>
+        <a href="~/ShoppingCart/OrderNow" class="shoppingCart" style="text-decoration:none">
+                <i class="fas fa-shopping-cart"></i>
+                <span>סל קניות</span>
+            </a>
+        @*@Html.ActionLink("סל קניות", "OrderNow", "ShoppingCart", new { style = "text-decoration:none", @class = "Shoop" })<i class="fas fa-shopping-cart"></i>*@
+
         @if (currentUser == null)
         {
             <a href="~/Login/LoginPage" class="loginIcon" style="text-decoration:none">

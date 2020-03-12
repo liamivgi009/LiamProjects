@@ -20,12 +20,14 @@
             <textarea class="ProductPrice" rows="2" cols="5">
                 ₪@data.ProductPrice
             </textarea>
-            <div class="addToShoppingCart">
-                <button class="ShoppingButProduct1">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="text">הוספה לסל</span>
-                </button>
-            </div>
+            @*<div class="addToShoppingCart">
+            <button class="ShoppingButProduct1">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="text">הוספה לסל</span>
+            </button>
+        </div>*@
+            <i class="fas fa-shopping-bag"></i>
+            @Html.ActionLink("הוספה לסל", "OrderNow", "ShoppingCart", new { id = data.ProductID,  @class = "ShoppingButProduct1" }, null)
             <div class="counter">
                 <div class="minus">-</div>
                 <input type="text" value="1" class="count" />
@@ -63,12 +65,15 @@ else
             <span class="ProductPrice">
                 ₪@data.ProductPrice
             </span>
-            <div class="addToShoppingCart">
-                <button class="ShoppingButProduct1">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="text">הוספה לסל</span>
-                </button>
-            </div>
+            @*<div class="addToShoppingCart">
+            <button class="ShoppingButProduct1">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="text">הוספה לסל</span>
+            </button>
+        </div>*@
+            <br />
+            <i class="fas fa-shopping-bag"></i>
+            @Html.ActionLink("הוספה לסל", "OrderNow", "ShoppingCart", new { id = data.ProductID, @class = "ShoppingButProduct1" }, null)
             <div class="counter">
                 <div class="minus">-</div>
                 <input type="text" value="1" class="count" />

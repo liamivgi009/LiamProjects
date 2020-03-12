@@ -25,7 +25,7 @@ namespace AmiamStore.App_BLL
                 product.ProductID = (int)dr["ProductID"];
                 product.ProductName = dr["ProductName"].ToString();
                 product.ProductImage = dr["ProductImage"].ToString();
-                product.ProductPrice = dr["ProductPrice"].ToString();
+                product.ProductPrice = (int)dr["ProductPrice"];
                 product.ShipperID = dr["ShipperID"].ToString();
                 product.ProductDescription = dr["ProductDescription"].ToString();
                 products.Add(product);
