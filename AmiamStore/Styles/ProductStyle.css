@@ -138,11 +138,12 @@
 .lineMaster {
     background-image: url('../Images/Point.png');
     background-repeat: repeat-x;
-    background-position: center center;
+    background-position: bottom;
     margin-left: 23%;
-    width: 1100px;
-    margin-bottom:-2%;
-    margin-top:-1.7%;
+    width: 1200px;
+}
+.imageLogo{
+    margin-bottom:-2.9%;
 }
 .starRating {
     transform: translate(-50%,-50%);
@@ -152,17 +153,30 @@
 }
 .ProductDetails a {
     text-decoration: none;
-    color:black;
+    color: black;
+    font-size:20px;
 }
-    .starRating input {
-        display: none;
-    }
+.LinkBut {
+    margin-left: 55%;
+    margin-top: 3%;
+    transition-duration: 0.4s;
+    width:120px;
+}
+.LinkBut:hover{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.ProductDetails a:hover{
+    color:red;
+}
+.starRating input {
+    display: none;
+}
 
-    .starRating label {
+.starRating label {
         display: inline-block;
         cursor: pointer;
         width: 15px;
-    }
+}
 
 .label:before {
     content: '\f005';

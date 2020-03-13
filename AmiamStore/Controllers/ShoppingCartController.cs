@@ -14,22 +14,22 @@ namespace AmiamStore.Controllers
         private string strCart = "Cart";
         
         [HttpGet]
-        public ActionResult CartView()
-        {
-            CartViewModel model = new CartViewModel();
-            model.Products = (List<CartModel>)Session["Cart"];
-            if(model.Products == null)
-                model.Products = new List<CartModel>();
-            model.Total = GetAmountToCharge();
-            return View(model);
-        }
-        [HttpPost]
-        public ActionResult CartView(CartViewModel model)
-        {
-            var paymentWebService = new PaymentServiceReference.PaymentWebServiceSoapClient();
-            paymentWebService.Pay(model.CreditCardNumber, model.Cvv, GetAmountToCharge());
-            return RedirectToAction("OrderComplete");
-        }
+        //public ActionResult CartView()
+        //{
+        //    CartViewModel model = new CartViewModel();
+        //    model.Products = (List<CartModel>)Session["Cart"];
+        //    if(model.Products == null)
+        //        model.Products = new List<CartModel>();
+        //    model.Total = GetAmountToCharge();
+        //    return View(model);
+        //}
+        //[HttpPost]
+        //public ActionResult CartView(CartViewModel model)
+        //{
+        //    var paymentWebService = new PaymentServiceReference.PaymentWebServiceSoapClient();
+        //    paymentWebService.Pay(model.CreditCardNumber, model.Cvv, GetAmountToCharge());
+        //    return RedirectToAction("OrderComplete");
+        //}
 
         public ActionResult OrderComplete()
         {

@@ -176,7 +176,7 @@
     <Content Include="Styles\MasterPageStyle.css" />
     <Content Include="Styles\ProductStyle.css" />
     <Content Include="Styles\Register.css" />
-    <Content Include="Styles\SafteyProductsStyle.css" />
+    <Content Include="Styles\ProductsPageStyle.css" />
     <Content Include="Styles\ShoppingCartStyle.css" />
     <Content Include="Styles\style.css" />
     <Content Include="Web.config" />
