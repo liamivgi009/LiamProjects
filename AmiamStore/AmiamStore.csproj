@@ -49,6 +49,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -91,6 +93,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\AmiamStore.accdb" />
+    <Content Include="Connected Services\PaymentServiceReference\AmiamStore.PaymentServiceReference.PayResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\PaymentServiceReference\PaymentWebService.disco" />
+    <None Include="Connected Services\PaymentServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\PaymentServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\PaymentServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Global.asax" />
     <Content Include="Images\Amiam_Slide_Boxes.png" />
     <Content Include="Images\Amiam_Slide_Truck.png" />
@@ -146,8 +158,10 @@
     <Content Include="Images\Products\WorkGlovesImages\ReinforcedGreenHouseholdWorkGloves.png" />
     <Content Include="Images\Products\WorkGlovesImages\ReinforcedWeldingWorkGloves.png" />
     <Content Include="Images\Products\WorkGlovesImages\WorkingGlovesT-Manjit.png" />
+    <Content Include="PaymentWebService.asmx" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery.qcontroller.js" />
+    <None Include="Connected Services\PaymentServiceReference\PaymentWebService.wsdl" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -182,6 +196,11 @@
     <Compile Include="App_DAL\ProductDAL.cs" />
     <Compile Include="App_DAL\ProductsPageDAL.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Connected Services\PaymentServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\BaseControllers\BaseController.cs" />
     <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -201,6 +220,10 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\ProductsPageModel.cs" />
+    <Compile Include="PaymentWebService.asmx.cs">
+      <DependentUpon>PaymentWebService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +238,7 @@
     <Content Include="Views\ProductsPage\ProductsPage.cshtml" />
     <Content Include="Views\Error\UserNameError.cshtml" />
     <Content Include="Views\ShoppingCart\CartView.cshtml" />
+    <Content Include="Views\ShoppingCart\OrderComplete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -223,11 +247,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\" />
     <Folder Include="Content\" />
     <Folder Include="fonts\" />
     <Folder Include="Views\Errors\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="Views\SpacifitProduct\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\PaymentServiceReference\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -17,4 +17,15 @@ namespace AmiamStore.Models
             this.Quantity = q;
         }
     }
+
+    public class CartViewModel
+    {
+        public string CreditCardNumber { get; set; }
+        public string Cvv { get; set; }
+        public string IdNumber { get; set; }
+        public int Total { get; set; }
+
+        public List<CartModel> Products { get; set; }
+
+    }
 }

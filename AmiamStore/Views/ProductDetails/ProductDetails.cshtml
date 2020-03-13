@@ -26,8 +26,9 @@
                 <span class="text">הוספה לסל</span>
             </button>
         </div>*@
-            <i class="fas fa-shopping-bag"></i>
-            @Html.ActionLink("הוספה לסל", "OrderNow", "ShoppingCart", new { id = data.ProductID,  @class = "ShoppingButProduct1" }, null)
+            <span class="text">
+                @Html.ActionLink("הוספה לסל", "OrderNow", "ShoppingCart", null, new { id = data.ProductID, @class = "my-class" })
+            </span>
             <div class="counter">
                 <div class="minus">-</div>
                 <input type="text" value="1" class="count" />

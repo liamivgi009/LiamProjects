@@ -1,7 +1,7 @@
-﻿
+﻿@using AmiamStore.Models;
 @{
     ViewBag.Title = "HomePage";
-    Layout = "~/Views/Share/MasterPage.cshtml";
+Layout = "~/Views/Share/MasterPage.cshtml";
 }
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -38,7 +38,7 @@
             </form>
         </div>
         <div class="slider-item" style="background-image: url('../../Images/BackGroundImage2.png')">
-                @*<form method="get" action="../Register/Register">
+            @*<form method="get" action="../Register/Register">
                     <button class="ContactButton" type="submit">צור קשר עכשו</button>
                 </form>*@
             <span>
@@ -100,12 +100,22 @@
             </div>
         </div>
     </div>
-   
+
 
 </div>
 <script src="~/Scripts/main.js"></script>
+@*@{
+    var data = ViewBag.Message;
+    Random rnd = new Random();
+    int[] numbers = new int[3];
+    for (int i = 0; i < numbers.Length; i++)
+    {
+        numbers[i] = rnd.Next(1, data.products.count);
+    }
+}*@
+
 <div class="div">
- 
+
     <main class="main">
         <div class="PopularProductsLine">
             <h3 class="h3">
@@ -115,7 +125,11 @@
         <div class="PopularProducts">
             <div class="Box">
                 <div class="ProductPrice">
-                    ₪280
+                    @*@for (int i = 0; i < numbers.Length; i++)
+                    {
+                        if(numbers[i] == i)
+                            data.Products
+                    }*@
                 </div>
                 <br />
                 <span class="ProductName">
@@ -146,11 +160,11 @@
                     <img class="ProductImg1" src="~/Images/Products/ProfessionalClothingImages/ShortPoloShirt.png" />
                 </span>
                 <div class="addToShoppingCart">
-                <button class="ShoppingBut">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span>הוספה לסל</span>
-                </button>
-            </div>
+                    <button class="ShoppingBut">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>הוספה לסל</span>
+                    </button>
+                </div>
             </div>
             <span class="vertical_dotted_line"></span>
             <div class="Box">
@@ -166,7 +180,7 @@
                     <img class="ProductImg1" src="~/Images/Products/ProfessionalClothingImages/SoftshellCoat.jpg" />
                 </span>
                 <div class="addToShoppingCart">
-                    <button class = "ShoppingBut">
+                    <button class="ShoppingBut">
                         <i class="fas fa-shopping-bag"></i>
                         <span>הוספה לסל</span>
                     </button>
@@ -208,20 +222,20 @@
             <img src="~/Images/footer-logoWhite.png" />
         </div>
     </main>
-    
-   
+
+
 </div>
 <script type="text/javascript">
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36251023-1']);
-  _gaq.push(['_setDomainName', 'jqueryscript.net']);
-  _gaq.push(['_trackPageview']);
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36251023-1']);
+    _gaq.push(['_setDomainName', 'jqueryscript.net']);
+    _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
 
 </script>

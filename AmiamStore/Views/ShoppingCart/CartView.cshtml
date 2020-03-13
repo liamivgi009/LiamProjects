@@ -1,8 +1,9 @@
-﻿@using AmiamStore.Models;
+﻿@model AmiamStore.Models.CartViewModel
 @{
     ViewBag.Title = "CartView";
     Layout = "~/Views/Share/MasterPage.cshtml";
 }
+
 <link href="~/Styles/ShoppingCartStyle.css" rel="stylesheet" />
 
 <table border="1" class="ShoppingCartBox">
@@ -12,7 +13,7 @@
         <th>Quantity</th>
         <th>Sub Total</th>
     </tr>
-    @foreach (var cart in (List<CartModel>)Session["Cart"])
+    @foreach (var cart in Model.Products)
     {
         <tr>
             <td>@cart.product.ProductName</td>
@@ -29,14 +30,36 @@
         <td class="td" colspan="3">סה"כ:</td>
         <td>
             @{
-                List<CartModel> temp = (List<CartModel>)Session["Cart"];
-                var total = String.Format("{0:N0}", temp.Sum(x => x.Quantity * x.product.ProductPrice));
             }
 
-            @total  Shekel
+            @Model.Total
         </td>
     </tr>
 </table>
+<div>
+    @using (Html.BeginForm("CartView", "ShoppingCart", FormMethod.Post, new { @class = "payment-form" }))
+    {
+        <div class="div1">
+            @Html.Label("מספר כרטיס אשראי", new { @class = "label" })
+            @Html.TextBoxFor(m => m.CreditCardNumber, new { @class = "in1" })
+            @Html.ValidationMessageFor(m => m.CreditCardNumber)
+            <br />
+        </div>
+        <div class="div1">
+            @Html.Label("שלושת הספרות בגב הכרטיס", new { @class = "label" })
+            @Html.TextBoxFor(m => m.Cvv, new { @class = "in1" })
+            @Html.ValidationMessageFor(m => m.Cvv)
+            <br />
+        </div>
+        <div class="div1">
+            @Html.Label("מספר תעודת זהות", new { @class = "label" })
+            @Html.TextBoxFor(m => m.IdNumber, new { @class = "in1" })
+            @Html.ValidationMessageFor(m => m.IdNumber)
+            <br />
+        </div>
+        <input class="Submit" type="submit" name="" value="שלח" />
+    }
+</div>
 <div class="lineMaster">
     <img class="imageLogo" src="~/Images/footer-logoWhite.png" />
 </div>

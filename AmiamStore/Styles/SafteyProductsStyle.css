@@ -18,15 +18,6 @@
     font-size:25px;
     padding-top:1%;
 }
-.EditBut{
-    transition-duration: 0.4s;
-    width: 75px;
-    height: 20px;
-    background-color: #ffffff;
-	float:left;
-	display:inline-block;
-	margin-top:2%;
-}
 .EditBut:hover{
 	 color: red;
 }
@@ -41,6 +32,22 @@
 .h2Part2Gloves {
     margin-left: 25%;
     font-size: 20px;
+}
+a.my-class {
+    color: black;
+}
+
+a.my-class:active {
+        color: black
+}
+
+a.my-class:link {
+        color: black
+}
+
+a.my-class:visited {
+        color: black
+
 }
 .Product1 {
     display: inline-block;
@@ -96,9 +103,13 @@
 .addToShoppingCart {
     margin-top: -7%;
 }
-.ShoppingB{
-    color:red;
+.text{
+    color:black;
 }
+.ShoppingB {
+    color: #333333
+}
+
 .ShoppingButProduct1:hover {
     color: red;
     border: solid red 1px;

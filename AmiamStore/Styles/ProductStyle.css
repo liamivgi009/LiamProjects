@@ -113,11 +113,8 @@
     margin-top: 3%;
     padding-left:30%;
 }
-.ShoppingButProduct1 {
-  color:black;
-}
-.ShoppingButProduct1:hover {
-
+.ShoppBut {
+    color: black;
 }
 .text {
     color: red;
@@ -147,15 +144,16 @@
     margin-bottom:-2%;
     margin-top:-1.7%;
 }
-.imageLogo{
-}
 .starRating {
     transform: translate(-50%,-50%);
     display: flex;
     margin-left: 55%;
     margin-top: 8%;
 }
-
+.ProductDetails a {
+    text-decoration: none;
+    color:black;
+}
     .starRating input {
         display: none;
     }
