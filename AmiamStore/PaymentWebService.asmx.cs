@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
-
+using AmiamStore.App_DAL;
 namespace AmiamStore
 {
     /// <summary>
@@ -16,11 +16,11 @@ namespace AmiamStore
     // [System.Web.Script.Services.ScriptService]
     public class PaymentWebService : System.Web.Services.WebService
     {
-        
+
         [WebMethod]
         public bool Pay(string creditCardNumber, string cvv, double amount)
         {
-            if(creditCardNumber.Count() == 10 && cvv.Count() == 3)
+            if (creditCardNumber.Count() == 10 && cvv.Count() == 3)
             {
                 return true;
             }

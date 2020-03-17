@@ -3,6 +3,10 @@
     ViewBag.Title = "OrderComplete";
     Layout = "~/Views/Share/MasterPage.cshtml";
 }
-
+<link href="~/Styles/PaymentStyle.css" rel="stylesheet" />
 <h2 class="CompleteOrderTitle">The order was successful, thank you very much for your purchase and have a pleasant day</h2>
+<input class="ButPay" type="button" value="לעמוד הבית" onclick="location.href='@Url.Action("Index", "Home")'" />
+<div class="lineMaster">
+    <img class="imageLogo" src="~/Images/footer-logoWhite.png" />
+</div>
 

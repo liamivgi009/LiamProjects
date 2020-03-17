@@ -13,6 +13,7 @@ namespace AmiamStore.Controllers
         {
             ProductBLL bll = new ProductBLL();
             ProductModel prod = bll.getProduct(id);
+            prod.CategoryId = 2; //TODO: Take it from DB
             ViewBag.Message = prod;
             return View();
         }

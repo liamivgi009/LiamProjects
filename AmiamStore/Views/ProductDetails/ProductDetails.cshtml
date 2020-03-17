@@ -27,7 +27,7 @@
             </button>
         </div>*@
             <span class="text">
-                @Html.ActionLink("הוספה לסל", "OrderNow", "ShoppingCart", null, new { id = data.ProductID, @class = "my-class" })
+                @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = data.CategoryId, productId = data.ProductID }, new { @class = "my-class" })
             </span>
             <div class="CatagoryTitle">
                 :קטגוריה
@@ -70,7 +70,7 @@ else
             <br />
             <div class="LinkBut">
                 <i class="fas fa-shopping-bag"></i>
-                @Html.ActionLink("הוספה לסל", "OrderNow", "ShoppingCart", new { id = data.ProductID, @class = "ShoppingButProduct1" }, null)
+                @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id=data.CategoryId, productId = data.ProductID }, new { @class = "ShoppingButProduct1" })
             </div>
             <div class="CatagoryTitle">
                 :קטגוריה

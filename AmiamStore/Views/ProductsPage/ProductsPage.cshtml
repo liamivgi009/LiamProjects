@@ -38,7 +38,7 @@
                     </div>*@
                 <i class="fas fa-shopping-bag"></i>
                 <span class="text">
-                    @Html.ActionLink("הוספה לסל", "CartView", "ShoppingCart", new { id = product.ProductID }, new { @class = "my-class" })
+                    @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id=product.CategoryId, productId = product.ProductID }, new { @class = "my-class" })
                 </span>
                 <br />
 

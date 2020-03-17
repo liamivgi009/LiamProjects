@@ -23,7 +23,8 @@ namespace AmiamStore.Models
         public string CreditCardNumber { get; set; }
         public string Cvv { get; set; }
         public string IdNumber { get; set; }
-        public int Total { get; set; }
+        public double OrderAmount { get; set; }
+        //public int UserID { get; set; }
 
         public List<CartModel> Products { get; set; }
 

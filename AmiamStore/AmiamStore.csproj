@@ -159,6 +159,7 @@
     <Content Include="Images\Products\WorkGlovesImages\ReinforcedWeldingWorkGloves.png" />
     <Content Include="Images\Products\WorkGlovesImages\WorkingGlovesT-Manjit.png" />
     <Content Include="PaymentWebService.asmx" />
+    <Content Include="Scripts\DataBaseTable.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery.qcontroller.js" />
     <None Include="Connected Services\PaymentServiceReference\PaymentWebService.wsdl" />
@@ -174,6 +175,7 @@
     <Content Include="Styles\HomePage.css" />
     <Content Include="Styles\Login.css" />
     <Content Include="Styles\MasterPageStyle.css" />
+    <Content Include="Styles\PaymentStyle.css" />
     <Content Include="Styles\ProductStyle.css" />
     <Content Include="Styles\Register.css" />
     <Content Include="Styles\ProductsPageStyle.css" />
@@ -192,6 +194,8 @@
     <Compile Include="App_DAL\AmiamDB.cs" />
     <Compile Include="App_DAL\CustomersRepository.cs" />
     <Compile Include="App_DAL\DBHelper.cs" />
+    <Compile Include="App_DAL\OrderRepository.cs" />
+    <Compile Include="App_DAL\PaymentRepository.cs" />
     <Compile Include="App_DAL\UsersRepository.cs" />
     <Compile Include="App_DAL\ProductDAL.cs" />
     <Compile Include="App_DAL\ProductsPageDAL.cs" />
@@ -239,6 +243,8 @@
     <Content Include="Views\Error\UserNameError.cshtml" />
     <Content Include="Views\ShoppingCart\CartView.cshtml" />
     <Content Include="Views\ShoppingCart\OrderComplete.cshtml" />
+    <Content Include="Views\ShoppingCart\Payment.cshtml" />
+    <Content Include="Views\ShoppingCart\OrderFailed.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -247,10 +253,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Code\" />
     <Folder Include="Content\" />
     <Folder Include="fonts\" />
-    <Folder Include="Views\Errors\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="Views\SpacifitProduct\" />
   </ItemGroup>

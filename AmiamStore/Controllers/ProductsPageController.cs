@@ -14,13 +14,57 @@ namespace AmiamStore.Controllers
     {
         public ProductsPageController() : base(false) { }
         private ProductsPageBLL _productsService = new ProductsPageBLL();
-        // GET: SpacifitProduct
-        public ActionResult ProductsPage(int id)
+
+        private string strCart = "Cart";
+        
+
+        public ActionResult ProductsPage(int id, int? productId)
         {
+            if (productId.HasValue)
+            {
+                AddProductToCart(productId.Value);
+            }
             var products = _productsService.GetProductsByCata(id);
             ProductsPageModel model = GetModel(products.Products);
             return View(model);
         }
+
+        private void AddProductToCart(int productId)
+        {
+            ProductBLL bll = new ProductBLL();
+
+            if (Session[strCart] == null)
+            {
+                List<CartModel> listCart = new List<CartModel>
+                {
+                    new CartModel(bll.getProduct((int)productId) , 1)
+                };
+                Session[strCart] = listCart;
+            }
+            else
+            {
+                List<CartModel> listCart = (List<CartModel>)Session[strCart];
+                int check = IsExistCheck(productId);
+                if (check == 0)
+                    listCart.Add(new CartModel(bll.getProduct(productId), 1));
+                else
+                    listCart[check].Quantity++;
+
+                Session[strCart] = listCart;
+            }
+        }
+
+        private int IsExistCheck(int id)
+        {
+            List<CartModel> listCart = (List<CartModel>)Session[strCart];
+            for (int i = 0; i < listCart.Count; i++)
+            {
+                if (listCart[i].product.ProductID == id)
+                    return i;
+            }
+            return 0;
+        }
+
 
         private ProductsPageModel GetModel(List<ProductModel> products)
         {
@@ -30,7 +74,7 @@ namespace AmiamStore.Controllers
             foreach (var product in products)
             {
                 CDescrip = product.CatagoryDescription;
-                model.Products.Add(new ProductModel() { ProductID = product.ProductID, ProductName = product.ProductName, ProductImage = product.ProductImage, ProductPrice = product.ProductPrice , CatagoryDescription = product.CatagoryDescription});
+                model.Products.Add(new ProductModel() { ProductID = product.ProductID, ProductName = product.ProductName, ProductImage = product.ProductImage, ProductPrice = product.ProductPrice , CatagoryDescription = product.CatagoryDescription, CategoryId = product.CategoryId});
             }
             model.CatagoryDescription = CDescrip;
             return model;

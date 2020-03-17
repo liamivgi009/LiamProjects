@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using AmiamStore.App_DAL;
 namespace AmiamStore.Controllers
 {
     public class ShoppingCartController : Controller
@@ -15,62 +15,65 @@ namespace AmiamStore.Controllers
         
         [HttpGet]
         //public ActionResult CartView()
-        //{
-        //    CartViewModel model = new CartViewModel();
-        //    model.Products = (List<CartModel>)Session["Cart"];
-        //    if(model.Products == null)
-        //        model.Products = new List<CartModel>();
-        //    model.Total = GetAmountToCharge();
-        //    return View(model);
-        //}
-        //[HttpPost]
-        //public ActionResult CartView(CartViewModel model)
-        //{
-        //    var paymentWebService = new PaymentServiceReference.PaymentWebServiceSoapClient();
-        //    paymentWebService.Pay(model.CreditCardNumber, model.Cvv, GetAmountToCharge());
-        //    return RedirectToAction("OrderComplete");
-        //}
-
+        public ActionResult CartView()
+        {
+            CartViewModel model = new CartViewModel();
+            model.Products = GetCart();
+            model.OrderAmount = GetAmountToCharge();
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult CartView(CartViewModel c)
+        {
+            var paymentWebService = new PaymentServiceReference.PaymentWebServiceSoapClient();
+            bool p =  paymentWebService.Pay(c.CreditCardNumber, c.Cvv, GetAmountToCharge());
+            if (p == true)
+            {
+                OrderRepository Order = new OrderRepository();
+                CartViewModel model = new CartViewModel();
+                model.Products = GetCart();
+                model.OrderAmount = GetAmountToCharge();
+                Order.Insert(model);
+                return RedirectToAction("OrderComplete");
+            }
+            else
+                return RedirectToAction("OrderFailed");
+        }
+        [HttpGet]
+        public ActionResult Payment()
+        {
+            CartViewModel model = new CartViewModel();
+            model.OrderAmount = GetAmountToCharge();
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Payment(CartViewModel model)
+        {
+            var paymentWebService = new PaymentServiceReference.PaymentWebServiceSoapClient();
+            bool p =  paymentWebService.Pay(model.CreditCardNumber, model.Cvv, GetAmountToCharge());
+            return RedirectToAction("OrderComplete");
+        }
         public ActionResult OrderComplete()
+        {
+            return View();
+        }
+        public ActionResult OrderFailed()
         {
             return View();
         }
         private int GetAmountToCharge()
         {
-            return ((List<CartModel>)Session["Cart"]).Sum(x => x.Quantity * x.product.ProductPrice).Value;
+            return GetCart().Sum(x => x.Quantity * x.product.ProductPrice).Value;
         }
-        public ActionResult OrderNow(int? id)
+        private List<CartModel> GetCart()
         {
-            if(id == null)
-            {
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-            }
-            if(Session[strCart] == null)
-            {
-                List<CartModel> listCart = new List<CartModel>
-                {
-                    new CartModel(bll.getProduct((int)id) , 1)
-                };
-                Session[strCart] = listCart;
-            }
-            else
-            {
-                List<CartModel> listCart = (List<CartModel>)Session[strCart];
-                int check = isExistCheck((int)id);
-                if (check == 0)
-                    listCart.Add(new CartModel(bll.getProduct((int)id), 1));
-                else
-                    listCart[check].Quantity++;
-
-                Session[strCart] = listCart;
-            }
-          
-            return View("CartView");
+            object cartList = Session[strCart];
+            return cartList == null ? new List<CartModel>() : (List<CartModel>)cartList;
         }
-        private int isExistCheck(int id)
+        private int IsExistCheck(int id)
         {
             List<CartModel> listCart = (List<CartModel>)Session[strCart];
-            for(int i = 0;i< listCart.Count;i++)
+            for (int i = 0; i < listCart.Count; i++)
             {
                 if (listCart[i].product.ProductID == id)
                     return i;
@@ -83,11 +86,13 @@ namespace AmiamStore.Controllers
             {
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
             }
-            int check = isExistCheck((int)id);
+            int check = IsExistCheck((int)id);
             List<CartModel> listCart = (List<CartModel>)Session[strCart];
             listCart.RemoveAt(check);
-            return View("CartView");
-
+            CartViewModel model = new CartViewModel();
+            model.Products = listCart;
+            return View("CartView" , model);
         }
+
     }
 }
