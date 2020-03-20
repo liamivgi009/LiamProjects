@@ -15,7 +15,7 @@ namespace AmiamStore.PaymentServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PaymentServiceReference.PaymentWebServiceSoap")]
     public interface PaymentWebServiceSoap {
         
-        // CODEGEN: Generating message contract since element name creditCardNumber from namespace http://tempuri.org/ is not marked nillable
+        // CODEGEN: Generating message contract since element name holderName from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Pay", ReplyAction="*")]
         AmiamStore.PaymentServiceReference.PayResponse Pay(AmiamStore.PaymentServiceReference.PayRequest request);
         
@@ -47,21 +47,29 @@ namespace AmiamStore.PaymentServiceReference {
     public partial class PayRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string creditCardNumber;
+        public string holderName;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string creditCardNumber;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
         public string cvv;
         
-        [System.Runtime.Serialization.DataMemberAttribute(Order=2)]
-        public double amount;
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string expirityDate;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=4)]
+        public double amountToCharge;
         
         public PayRequestBody() {
         }
         
-        public PayRequestBody(string creditCardNumber, string cvv, double amount) {
+        public PayRequestBody(string holderName, string creditCardNumber, string cvv, string expirityDate, double amountToCharge) {
+            this.holderName = holderName;
             this.creditCardNumber = creditCardNumber;
             this.cvv = cvv;
-            this.amount = amount;
+            this.expirityDate = expirityDate;
+            this.amountToCharge = amountToCharge;
         }
     }
     
@@ -131,12 +139,14 @@ namespace AmiamStore.PaymentServiceReference {
             return base.Channel.Pay(request);
         }
         
-        public bool Pay(string creditCardNumber, string cvv, double amount) {
+        public bool Pay(string holderName, string creditCardNumber, string cvv, string expirityDate, double amountToCharge) {
             AmiamStore.PaymentServiceReference.PayRequest inValue = new AmiamStore.PaymentServiceReference.PayRequest();
             inValue.Body = new AmiamStore.PaymentServiceReference.PayRequestBody();
+            inValue.Body.holderName = holderName;
             inValue.Body.creditCardNumber = creditCardNumber;
             inValue.Body.cvv = cvv;
-            inValue.Body.amount = amount;
+            inValue.Body.expirityDate = expirityDate;
+            inValue.Body.amountToCharge = amountToCharge;
             AmiamStore.PaymentServiceReference.PayResponse retVal = ((AmiamStore.PaymentServiceReference.PaymentWebServiceSoap)(this)).Pay(inValue);
             return retVal.Body.PayResult;
         }
@@ -146,12 +156,14 @@ namespace AmiamStore.PaymentServiceReference {
             return base.Channel.PayAsync(request);
         }
         
-        public System.Threading.Tasks.Task<AmiamStore.PaymentServiceReference.PayResponse> PayAsync(string creditCardNumber, string cvv, double amount) {
+        public System.Threading.Tasks.Task<AmiamStore.PaymentServiceReference.PayResponse> PayAsync(string holderName, string creditCardNumber, string cvv, string expirityDate, double amountToCharge) {
             AmiamStore.PaymentServiceReference.PayRequest inValue = new AmiamStore.PaymentServiceReference.PayRequest();
             inValue.Body = new AmiamStore.PaymentServiceReference.PayRequestBody();
+            inValue.Body.holderName = holderName;
             inValue.Body.creditCardNumber = creditCardNumber;
             inValue.Body.cvv = cvv;
-            inValue.Body.amount = amount;
+            inValue.Body.expirityDate = expirityDate;
+            inValue.Body.amountToCharge = amountToCharge;
             return ((AmiamStore.PaymentServiceReference.PaymentWebServiceSoap)(this)).PayAsync(inValue);
         }
     }

@@ -25,10 +25,13 @@ namespace AmiamStore.Controllers
         [HttpPost]
         public ActionResult CartView(CartViewModel c)
         {
+            
             var paymentWebService = new PaymentServiceReference.PaymentWebServiceSoapClient();
-            bool p =  paymentWebService.Pay(c.CreditCardNumber, c.Cvv, GetAmountToCharge());
+            bool p = paymentWebService.Pay(c.CardHolder, c.CreditCardNumber, c.Cvv, c.ExpiryDate, GetAmountToCharge());
             if (p == true)
             {
+                PaymentRepository Repository = new PaymentRepository();
+                Repository.Insert(c);
                 OrderRepository Order = new OrderRepository();
                 CartViewModel model = new CartViewModel();
                 model.Products = GetCart();
@@ -36,26 +39,17 @@ namespace AmiamStore.Controllers
                 Order.Insert(model);
                 return RedirectToAction("OrderComplete");
             }
-            else
-                return RedirectToAction("OrderFailed");
-        }
-        [HttpGet]
-        public ActionResult Payment()
-        {
-            CartViewModel model = new CartViewModel();
-            model.OrderAmount = GetAmountToCharge();
-            return View(model);
-        }
-        [HttpPost]
-        public ActionResult Payment(CartViewModel model)
-        {
-            var paymentWebService = new PaymentServiceReference.PaymentWebServiceSoapClient();
-            bool p =  paymentWebService.Pay(model.CreditCardNumber, model.Cvv, GetAmountToCharge());
-            return RedirectToAction("OrderComplete");
+            return RedirectToAction("OrderFailed");
+
         }
         public ActionResult OrderComplete()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult OrderComplete(CartViewModel c)
+        {
+            return View(c);
         }
         public ActionResult OrderFailed()
         {

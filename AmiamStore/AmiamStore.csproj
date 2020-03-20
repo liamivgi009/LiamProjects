@@ -186,6 +186,7 @@
   <ItemGroup>
     <Compile Include="App_BLL\AuthenticationManager.cs" />
     <Compile Include="App_BLL\Entities\Customer.cs" />
+    <Compile Include="App_BLL\Entities\Payment.cs" />
     <Compile Include="App_BLL\Entities\User.cs" />
     <Compile Include="App_BLL\LoginBLL.cs" />
     <Compile Include="App_BLL\ProductBLL.cs" />
