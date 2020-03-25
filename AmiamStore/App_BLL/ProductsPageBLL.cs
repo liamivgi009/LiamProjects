@@ -104,7 +104,7 @@ namespace AmiamStore.App_BLL
             {
                 int mostCommonValue = MostCommonNumberInArray(AllNumbersFromDatatable)[0];
                 MostPopularProducts[i] = mostCommonValue;
-                DeleteMostCommonNumber(AllNumbersFromDatatable, mostCommonValue);
+                AllNumbersFromDatatable = DeleteMostCommonNumber(AllNumbersFromDatatable, mostCommonValue);
             }
             return MostPopularProducts;
         }
