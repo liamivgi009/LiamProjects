@@ -5,6 +5,7 @@ using System.Web;
 using System.Data;
 using AmiamStore.App_DAL;
 using AmiamStore.Models;
+using AmiamStore.HtmlHelpers;
 
 namespace AmiamStore.App_BLL
 {
@@ -69,14 +70,91 @@ namespace AmiamStore.App_BLL
              @" SELECT ProductID
                    FROM  Orders";
             DataTable dt = _dbHelper.GetData(sql);
-            int[] MostPopular = new int[3];
-            int i = 0;
-           foreach(DataRow dr in dt.Rows)
+            var AllNumbersFromDatatable = GetAllNumbersFromDatatable(dt).ToArray();
+            var maxNumber = AllNumbersFromDatatable.Max();
+            var timesOfEachNumberArray = new int[maxNumber];
+            for(int i = 0;i< AllNumbersFromDatatable.Length;i++)
             {
-                   
+                var number = AllNumbersFromDatatable[i];
+                timesOfEachNumberArray[i]++;
+                if (number == timesOfEachNumberArray[i])
+                    timesOfEachNumberArray[i]++;
+
             }
 
-            return MostPopular;
+            List<int> numbersWhichAppearTheMost = new List<int>(3);
+            for(int i = 0;i< 3;i++)
+            {
+                var max = timesOfEachNumberArray.Max();
+                var index = timesOfEachNumberArray.IndexOf(n => n == max);
+                timesOfEachNumberArray[index] = -1;
+                numbersWhichAppearTheMost.Add(index);
+            }
+            return numbersWhichAppearTheMost.ToArray();
+        }
+        public int[] MostPopularProducts()
+        {
+            string sql =
+           @" SELECT ProductID
+                   FROM  Orders";
+            DataTable dt = _dbHelper.GetData(sql);
+            var AllNumbersFromDatatable = GetAllNumbersFromDatatable(dt).ToArray();
+            int[] MostPopularProducts = new int[3];
+            for(int i = 0;i < MostPopularProducts.Length;i++)
+            {
+                int mostCommonValue = MostCommonNumberInArray(AllNumbersFromDatatable)[0];
+                MostPopularProducts[i] = mostCommonValue;
+                DeleteMostCommonNumber(AllNumbersFromDatatable, mostCommonValue);
+            }
+            return MostPopularProducts;
+        }
+        public IEnumerable<int> GetAllNumbersFromDatatable(DataTable dt)
+        {
+            foreach(DataRow row in dt.Rows)
+            {
+                for(int i = 0;i< dt.Columns.Count;i++)
+                {
+                    var value = row[i];
+                    if(value is int)
+                    {
+                        yield return (int)value;
+                    }
+                }
+            }
+        }
+        public int[] MostCommonNumberInArray(int[] arr)
+        {
+            var cnt = new Dictionary<int, int>();
+            int[] ValueAndCount = new int[2];
+            foreach (int value in arr)
+            {
+                if (cnt.ContainsKey(value))
+                {
+                    cnt[value]++;
+                }
+                else
+                {
+                    cnt.Add(value, 1);
+                }
+            }
+            int mostCommonValue = 0;
+            int highestCount = 0;
+            foreach (KeyValuePair<int, int> pair in cnt)
+            {
+                if (pair.Value > highestCount)
+                {
+                    mostCommonValue = pair.Key;
+                    highestCount = pair.Value;
+                }
+            }
+            ValueAndCount[0] = mostCommonValue;
+            ValueAndCount[1] = highestCount;
+            return ValueAndCount;
+        }
+        public int[] DeleteMostCommonNumber(int[] arr , int number)
+        {
+            arr = arr.Where(val => val != number).ToArray();
+            return arr;
         }
     }
 }

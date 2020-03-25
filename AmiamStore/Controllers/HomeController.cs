@@ -19,7 +19,7 @@ namespace AmiamStore.Controllers
         {
             ProductsPageModel model = new ProductsPageModel();
             List<ProductModel> products = _productsService.GetProductsList().Products;
-            int[] arr = _productsService.GetPopularProducts();
+            int[] arr = _productsService.MostPopularProducts();
             List<ProductModel> productsPopular = new List<ProductModel>();
             for (int i = 0; i < arr.Length;i++)
             {
