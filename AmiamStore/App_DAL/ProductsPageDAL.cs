@@ -20,5 +20,15 @@ namespace AmiamStore.App_DAL
             DataTable dt = dbh.GetData(sql);
             return dt;
         }
+
+        public DataTable getProducts()
+        {
+            DBHelper dbh = new DBHelper();
+            String sql =
+               @"SELECT        ProductName, ProductImage, ProductPrice, ProductDescription, ShipperID, ProductID
+                     FROM            Product";
+            DataTable dt = dbh.GetData(sql);
+            return dt;
+        }
     }
 }

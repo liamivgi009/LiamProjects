@@ -9,5 +9,6 @@ namespace AmiamStore.Models
     {
         public List<ProductModel> Products { get; set; }
         public string CatagoryDescription { get; set; }
+        public int[] MostPopularProducts { get; set; }
     }
 }

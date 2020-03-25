@@ -24,8 +24,9 @@ namespace AmiamStore
         {
             PaymentMethod o = new PaymentMethod(holderName,creditCardNumber,cvv,expirityDate);
             List<PaymentMethod> payments = new List<PaymentMethod>();
-            payments = _paymentManager.LoadSavedPayments();
-            if(payments.FindIndex(o))
+            string month = expirityDate.Substring(0, 2);
+            string year = expirityDate.Substring(4,3);
+            if (cvv.Length == 3 && creditCardNumber.Length == 19 && int.Parse(month) > 0 && int.Parse(month) <= 12 && int.Parse(year) > 20)
                 return true;
             return false;
         }
@@ -49,25 +50,6 @@ namespace AmiamStore
                 _paymentMethods.Add(m);
             }
             return SavedPayments;
-        }
-        public bool Charge(string holderName, string creditCardNumber, string cvv, string expirityDate, double amountToCharge)
-        {
-            lock (_paymentMethods)
-            {
-                try
-                {
-                    var paymentMethod = _paymentMethods.Where(p => p.CreditCardNumber == creditCardNumber).Single();
-                    if (cvv == paymentMethod.Cvv)
-                    {
-                        paymentMethod.Balance -= amountToCharge;
-                        return true;
-                    }
-                }
-                catch
-                { }
-                return false;
-            }
-
         }
     }
     public class PaymentMethod

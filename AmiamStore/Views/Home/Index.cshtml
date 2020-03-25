@@ -1,7 +1,7 @@
-﻿@using AmiamStore.Models;
+﻿@model AmiamStore.Models.ProductsPageModel
 @{
     ViewBag.Title = "HomePage";
-Layout = "~/Views/Share/MasterPage.cshtml";
+    Layout = "~/Views/Share/MasterPage.cshtml";
 }
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -104,18 +104,10 @@ Layout = "~/Views/Share/MasterPage.cshtml";
 
 </div>
 <script src="~/Scripts/main.js"></script>
-@*@{
+@{
     var data = ViewBag.Message;
-    Random rnd = new Random();
-    int[] numbers = new int[3];
-    for (int i = 0; i < numbers.Length; i++)
-    {
-        numbers[i] = rnd.Next(1, data.products.count);
-    }
-}*@
-
+}
 <div class="div">
-
     <main class="main">
         <div class="PopularProductsLine">
             <h3 class="h3">
@@ -125,19 +117,15 @@ Layout = "~/Views/Share/MasterPage.cshtml";
         <div class="PopularProducts">
             <div class="Box">
                 <div class="ProductPrice">
-                    @*@for (int i = 0; i < numbers.Length; i++)
-                    {
-                        if(numbers[i] == i)
-                            data.Products
-                    }*@
+                        @Model.Products.First().ProductPrice
                 </div>
                 <br />
                 <span class="ProductName">
-                    מעיל זוהר
+                    @Model.Products.First().ProductName
                 </span>
                 <br />
                 <span class="ImageCoat">
-                    <img class="ProductImg" src="~/Images/Products/SafteyProductsImages/LuminousCoatHomePage.JPEG" />
+                    <img class="ProductImg" src="~/Images/Products/@Model.Products.First().ProductImage" />
                 </span>
                 <div class="addToShoppingCart">
                     <button class="ShoppingBut">
@@ -149,15 +137,15 @@ Layout = "~/Views/Share/MasterPage.cshtml";
             <span class="vertical_dotted_line"></span>
             <div class="Box">
                 <span class="ProductPrice">
-                    ₪25
+                    @Model.Products[2].ProductPrice
                 </span>
                 <br />
                 <span class="ProductName">
-                    חולצת פולו קצרה
+                    @Model.Products[2].ProductName
                 </span>
                 <br />
                 <span>
-                    <img class="ProductImg1" src="~/Images/Products/ProfessionalClothingImages/ShortPoloShirt.png" />
+                    <img class="ProductImg1" src="~/Images/Products/@Model.Products[2].ProductImage" />
                 </span>
                 <div class="addToShoppingCart">
                     <button class="ShoppingBut">
@@ -169,15 +157,15 @@ Layout = "~/Views/Share/MasterPage.cshtml";
             <span class="vertical_dotted_line"></span>
             <div class="Box">
                 <span class="ProductPrice">
-                    ₪145
+                    @Model.Products[3].ProductPrice
                 </span>
                 <br />
                 <span class="ProductName">
-                    מעיל סופטשל
+                    @Model.Products[3].ProductName
                 </span>
                 <br />
                 <span>
-                    <img class="ProductImg1" src="~/Images/Products/ProfessionalClothingImages/SoftshellCoat.jpg" />
+                    <img class="ProductImg1" src="~/Images/Products/@Model.Products[3].ProductImage" />
                 </span>
                 <div class="addToShoppingCart">
                     <button class="ShoppingBut">

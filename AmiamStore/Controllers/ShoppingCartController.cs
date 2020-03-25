@@ -24,8 +24,7 @@ namespace AmiamStore.Controllers
         }
         [HttpPost]
         public ActionResult CartView(CartViewModel c)
-        {
-            
+        {     
             var paymentWebService = new PaymentServiceReference.PaymentWebServiceSoapClient();
             bool p = paymentWebService.Pay(c.CardHolder, c.CreditCardNumber, c.Cvv, c.ExpiryDate, GetAmountToCharge());
             if (p == true)
@@ -40,7 +39,6 @@ namespace AmiamStore.Controllers
                 return RedirectToAction("OrderComplete");
             }
             return RedirectToAction("OrderFailed");
-
         }
         public ActionResult OrderComplete()
         {
