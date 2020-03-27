@@ -14,9 +14,16 @@ namespace AmiamStore.Controllers
     {
         public HomeController() : base(false) { }
         private ProductsPageBLL _productsService = new ProductsPageBLL();
+        private string strCart = "Cart";
 
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index(int? productId)
         {
+            if (productId.HasValue)
+            {
+                AddProductToCart(productId.Value);
+                RedirectToAction("CartView", "ShoppingCart");
+            }
             ProductsPageModel model = new ProductsPageModel();
             List<ProductModel> products = _productsService.GetProductsList().Products;
             int[] arr = _productsService.MostPopularProducts();
@@ -28,6 +35,49 @@ namespace AmiamStore.Controllers
             }
             model.Products = productsPopular;
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Index(ProductsPageModel c)
+        {
+            CustomersRepository p = new CustomersRepository();
+            p.InsertPotinoalCustomers(c);
+            return RedirectToAction("Index", "Home");
+        }
+        private void AddProductToCart(int productId)
+        {
+            ProductBLL bll = new ProductBLL();
+
+            if (Session[strCart] == null)
+            {
+                List<CartModel> listCart = new List<CartModel>
+                {
+                    new CartModel(bll.getProduct((int)productId) , 1)
+                };
+                Session[strCart] = listCart;
+            }
+            else
+            {
+                List<CartModel> listCart = (List<CartModel>)Session[strCart];
+                int check = IsExistCheck(productId);
+                if (check == 0)
+                    listCart.Add(new CartModel(bll.getProduct(productId), 1));
+                else
+                    listCart[check].Quantity++;
+
+                Session[strCart] = listCart;
+            }
+        }
+
+        private int IsExistCheck(int id)
+        {
+            List<CartModel> listCart = (List<CartModel>)Session[strCart];
+            for (int i = 0; i < listCart.Count; i++)
+            {
+                if (listCart[i].product.ProductID == id)
+                    return i;
+            }
+            return 0;
         }
 
     }

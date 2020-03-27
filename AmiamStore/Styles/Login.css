@@ -62,8 +62,10 @@
     background-repeat: repeat-x;
     background-position:bottom;
     margin-bottom:3%;
+    width:1100px;
+    margin-left:29%;
     margin-top:-3%;
 }
 .ImageLogin{
-    margin-bottom:-1.8%;
+    margin-bottom:-3%;
 }

@@ -76,7 +76,7 @@ else
                 :קטגוריה
             </div>
             <a href="../SafteyProducts/SafteyProductsPage" class="Catagory">
-                מוצרי בטיחות
+                @Html.ActionLink(Model.CatagoryName, "ProductsPage", "ProductsPage" , new {id = Model.CategoryId , productId = Model.ProductID })
             </a>
             <div class="Description">
                 <div class="DescriptionTitle">

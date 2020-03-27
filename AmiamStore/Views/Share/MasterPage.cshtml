@@ -1,5 +1,4 @@
-﻿@using AmiamStore.Models;
-@{
+﻿@{
     Layout = null;
 
 }
@@ -40,10 +39,9 @@
     </div>
     <div class="div2">
         <a href="~/ShoppingCart/CartView" class="shoppingCart" style="text-decoration:none">
-                <i class="fas fa-shopping-cart"></i>
-                <span>סל קניות</span>
-            </a>
-        @*@Html.ActionLink("סל קניות", "OrderNow", "ShoppingCart", new { style = "text-decoration:none", @class = "Shoop" })<i class="fas fa-shopping-cart"></i>*@
+            <i class="fas fa-shopping-cart"></i>
+            <span>סל קניות</span>
+        </a>
 
         @if (currentUser == null)
         {
@@ -71,14 +69,15 @@
     </div>
     <footer class="footer">
         <div class="detailsFooter">
-            <form action="" method="post" class="formBox">
-                <h1 class="contactNowFooter">:צור קשר </h1>
-                <input class="inputFooter" type="tel" placeholder="טלפון" />
-                <input class="inputFooter" type="text" placeholder="חברה" />
-                <input class="inputFooter" type="text" placeholder="שם" />
-                <br />
-                <button type="button" class="butFooter"> שלח הודעה</button>
-            </form>
+            <div class="FooterForm">
+                <form action="../Login/LoginPage" class="FormButtons">
+                    <input class="LoginButtonFoo" type="submit" value="התחבר לאתר" />
+                </form>               
+                <form action="../Register/Register" class="FormButtons">
+                    <input class="RegisterButtonFoo" type="submit" value="הירשם לאתר" />
+                </form>         
+            </div>
+
             <div class="CompanyDetails">
 
                 <span class="blueWord"> להצעת מחיר</span>

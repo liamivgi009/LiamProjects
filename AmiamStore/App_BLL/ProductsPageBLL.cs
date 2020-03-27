@@ -34,6 +34,7 @@ namespace AmiamStore.App_BLL
                 product.CategoryId = catagoryID;
                 products.Add(product);
                 product.CatagoryDescription = dr["CatagoryDescription"].ToString();
+                product.CatagoryName = dr["CatagoryName"].ToString();
                 CDescription = product.CatagoryDescription;
 
             }
@@ -48,7 +49,6 @@ namespace AmiamStore.App_BLL
 
             // converting from a DataTable to a Product Object!
             ProductsPageModel d = new ProductsPageModel();
-            string CDescription = "";
             List<ProductModel> products = new List<ProductModel>();
             foreach (DataRow dr in dt.Rows)
             {
@@ -57,40 +57,12 @@ namespace AmiamStore.App_BLL
                 product.ProductName = dr["ProductName"].ToString();
                 product.ProductImage = dr["ProductImage"].ToString();
                 product.ProductPrice = (int)dr["ProductPrice"];
-                product.ShipperID = dr["ShipperID"].ToString();
                 product.ProductDescription = dr["ProductDescription"].ToString();
+                product.CatagoryName = dr["CatagoryName"].ToString();
                 products.Add(product);
             }
             d.Products = products;
             return d;
-        }
-        public int[] GetPopularProducts()
-        {
-            string sql =
-             @" SELECT ProductID
-                   FROM  Orders";
-            DataTable dt = _dbHelper.GetData(sql);
-            var AllNumbersFromDatatable = GetAllNumbersFromDatatable(dt).ToArray();
-            var maxNumber = AllNumbersFromDatatable.Max();
-            var timesOfEachNumberArray = new int[maxNumber];
-            for(int i = 0;i< AllNumbersFromDatatable.Length;i++)
-            {
-                var number = AllNumbersFromDatatable[i];
-                timesOfEachNumberArray[i]++;
-                if (number == timesOfEachNumberArray[i])
-                    timesOfEachNumberArray[i]++;
-
-            }
-
-            List<int> numbersWhichAppearTheMost = new List<int>(3);
-            for(int i = 0;i< 3;i++)
-            {
-                var max = timesOfEachNumberArray.Max();
-                var index = timesOfEachNumberArray.IndexOf(n => n == max);
-                timesOfEachNumberArray[index] = -1;
-                numbersWhichAppearTheMost.Add(index);
-            }
-            return numbersWhichAppearTheMost.ToArray();
         }
         public int[] MostPopularProducts()
         {

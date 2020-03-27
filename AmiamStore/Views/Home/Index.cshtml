@@ -79,11 +79,14 @@
             <h1 class="SliderTextLastImg2">
                 השאר את פרטייך ונחזור אליך בהקדם
             </h1>
-            <form class="slide5Form" method="get" action="">
-                <button class="but" type="submit">שלח</button>
-                <input class="input" placeholder="טלפון" type="tel" required />
-                <input class="input" placeholder="שם מלא" type="text" required />
-            </form>
+            <div class="slide5Form">
+                @using (Html.BeginForm())
+                {
+                    <button class="but" type="submit">שלח</button>
+                    @Html.TextBoxFor(m => m.PotionalCustomerPhone, new { placeholder = "טלפון", @class = "input", data_mask = "000-00-00-000" })
+                    @Html.TextBoxFor(m => m.PotionalCustomerName, new { placeholder = "שם", @class = "input" })
+                }
+            </div>
         </div>
         <div class="slider-panel">
             <div class="slider-panel__navigation">
@@ -127,12 +130,10 @@
                 <span class="ImageCoat">
                     <img class="ProductImg" src="~/Images/@Model.Products.First().ProductImage" />
                 </span>
-                <div class="addToShoppingCart">
-                    <button class="ShoppingBut">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span>הוספה לסל</span>
-                    </button>
-                </div>
+                <span class="addToShoppingCart">
+                    <span><i class="fas fa-shopping-bag"></i></span>
+                    @Html.ActionLink("הוספה לסל", "Index", "Home", new { productId = Model.Products.First().ProductID }, new { @class = "ShoppingBut" })
+                </span>
             </div>
             <span class="vertical_dotted_line"></span>
             <div class="Box">
@@ -147,12 +148,10 @@
                 <span>
                     <img class="ProductImg1" src="~/Images/@Model.Products[1].ProductImage" />
                 </span>
-                <div class="addToShoppingCart">
-                    <button class="ShoppingBut">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span>הוספה לסל</span>
-                    </button>
-                </div>
+                <span class="addToShoppingCart">
+                    <i class="fas fa-shopping-bag"></i>@Html.ActionLink("הוספה לסל", "Index", "Home", new { productId = Model.Products[1].ProductID }, new { @class = "ShoppingBut" })
+
+                </span>
             </div>
             <span class="vertical_dotted_line"></span>
             <div class="Box">
@@ -167,12 +166,10 @@
                 <span>
                     <img class="ProductImg1" src="~/Images/@Model.Products[2].ProductImage" />
                 </span>
-                <div class="addToShoppingCart">
-                    <button class="ShoppingBut">
-                        <i class="fas fa-shopping-bag"></i>
-                        <span>הוספה לסל</span>
-                    </button>
-                </div>
+                <span class="addToShoppingCart">
+                    <span><i class="fas fa-shopping-bag"></i></span>
+                    @Html.ActionLink("הוספה לסל", "Index", "Home", new { productId = Model.Products[2].ProductID }, new { @class = "ShoppingBut" })
+                </span>
             </div>
         </div>
         <div class="line">
@@ -198,21 +195,23 @@
                 <br />
                 עם הדפסה מותאמת אישית לפי צרכיך
             </h2>
-            <div class="inputs">
-                <button type="button" class="but">שלח</button>
-                <input class="input" type="tel" placeholder="טלפון" />
-                <input class="input" type="text" placeholder="חברה" />
-                <input class="input" type="text" placeholder="שם" />
+            <div class="PotinoalCustomersForm">
+                @using (Html.BeginForm())
+                {
+                    <button class="CustomersBut" type="submit">שלח</button>
+                    @Html.TextBoxFor(m => m.PotionalCustomerPhone, new { placeholder = "טלפון", @class = "input", data_mask = "000-00-00-000" })
+                    @Html.TextBoxFor(m => m.PotionalCustomerCompany, new { placeholder = "חברה", @class = "input" })
+                    @Html.TextBoxFor(m => m.PotionalCustomerName, new { placeholder = "שם", @class = "input" })
+                }
             </div>
-
-        </div>
-        <div class="lineMaster">
-            <img src="~/Images/footer-logoWhite.png" />
         </div>
     </main>
-
-
+        </div>
+<div class="lineMaster">
+    <img class="imageLogoWhite" src="~/Images/footer-logoWhite.png" />
 </div>
+
+
 <script type="text/javascript">
 
     var _gaq = _gaq || [];

@@ -4,6 +4,9 @@
     Layout = "~/Views/Share/MasterPage.cshtml";
 }
 <link href="~/Styles/ProductsPageStyle.css" rel="stylesheet" />
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <div class="MainSafteyPage">
     @{ var currentUser = Html.GetCurrentUser();}
@@ -38,13 +41,15 @@
                     </div>*@
                 <i class="fas fa-shopping-bag"></i>
                 <span class="text">
-                    @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id=product.CategoryId, productId = product.ProductID }, new { @class = "my-class" })
+                    @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = product.CategoryId, productId = product.ProductID }, new { @class = "my-class" })
                 </span>
                 <br />
 
             </div>
         }
     </div>
+
+    
 </div>
 <div class="lineMaster">
     <img class="imageLogo" src="~/Images/footer-logoWhite.png" />

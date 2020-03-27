@@ -13,6 +13,7 @@ namespace AmiamStore.Controllers
         // GET: Share
         public ActionResult MasterPage()
         {
+
             return View();
         }
        
