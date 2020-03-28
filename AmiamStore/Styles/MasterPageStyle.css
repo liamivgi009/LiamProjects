@@ -4,6 +4,7 @@
 }
 .menu{display:inline-block;
       margin-left:500px;
+      margin-top:3%;
 }
 .Serch{
     margin-top:-17px;
@@ -13,12 +14,15 @@
 .loginIcon{display:inline-block;margin-left:10px;color:black;}
 .Shoop{color:black;}
 .div2 {
-    margin-top: -60px;
+    display:block;
+    margin-top: -85px;
     margin-left: -430px;
+    margin-bottom:5%;
 }
 .li1{margin-left:15px;color:black;
      width:150px;
-     height:150px
+     height:150px;
+     margin-top:13%; 
 }
 .shoppingCart{
     color:black;
@@ -30,10 +34,8 @@
 .SerchBox {
     position: absolute;
     left: 36%;
-    top:6%;
     transform: translate(-50%,-50%);
     background: #2f3640;
-    height: 25px;
     border-radius: 25px;
     padding: 10px;
 }

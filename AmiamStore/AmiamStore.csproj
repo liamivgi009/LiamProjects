@@ -133,9 +133,14 @@
     <Content Include="Images\Gears_Acc.jpg" />
     <Content Include="Images\HeaderImageHomePage.png" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\Products\SafteyProductsImages\DoubleSidedBrassCoat.jpg" />
+    <Content Include="Images\Products\SafteyProductsImages\KangarooHoodie.png" />
     <Content Include="Images\Products\SafteyProductsImages\LuminousCoatHomePage.JPEG" />
     <Content Include="Images\Products\SafteyProductsImages\MDAModelVest.jpg" />
     <Content Include="Images\Point.png" />
+    <Content Include="Images\Products\SafteyProductsImages\ShortSleeveDrifitShirt.jpg" />
+    <Content Include="Images\Products\SafteyProductsImages\thermalShirt.jpg" />
+    <Content Include="Images\Products\SafteyProductsImages\Women%27sLycraTShirt.png" />
     <Content Include="Images\ProffesionalClothing.jpg" />
     <Content Include="Images\Products\ProfessionalClothingImages\PVCStormSuit.jpg" />
     <Content Include="Images\Products\SafteyProductsImages\ReflectsTransparentShield.jpg" />
@@ -257,6 +262,7 @@
     <Content Include="Views\ShoppingCart\Payment.cshtml" />
     <Content Include="Views\ShoppingCart\OrderFailed.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Share\SerchTable.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
