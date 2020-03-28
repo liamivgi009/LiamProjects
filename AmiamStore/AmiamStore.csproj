@@ -175,9 +175,11 @@
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ProductPageScript.js" />
+    <Content Include="Styles\bootstrap.min.css" />
     <Content Include="Styles\ContacUsStyle.css" />
     <Content Include="Styles\ErrorsStyle.css" />
     <Content Include="Styles\HomePage.css" />
+    <Content Include="Scripts\jquery.twbsPagination.min.js" />
     <Content Include="Styles\Login.css" />
     <Content Include="Styles\MasterPageStyle.css" />
     <Content Include="Styles\PaymentStyle.css" />

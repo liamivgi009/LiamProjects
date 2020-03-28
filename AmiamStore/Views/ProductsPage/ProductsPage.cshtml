@@ -6,50 +6,91 @@
 <link href="~/Styles/ProductsPageStyle.css" rel="stylesheet" />
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Styles/bootstrap.min.css" rel="stylesheet" />
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
 <div class="MainSafteyPage">
     @{ var currentUser = Html.GetCurrentUser();}
     <div class="h2">
         @Model.CatagoryDescription
     </div>
     <div class="safteyProducts">
-        @foreach (var product in Model.Products)
-        {
-            <div class="Product1">
-
-                <a href="/ProductDetails/ProductDetails/@product.ProductID"><img class="img" style="width:300px" src="\Images\@product.ProductImage"></a>
-                <div class="horizontal_dotted_line"></div>
-                <div class="starRating">
-                    <input type="radio" name="star" class="star" /><label class="label" for="star"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star2"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star3"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star4"></label>
-                    <input type="radio" name="star" class="star" /><label class="label" for="star5"></label>
-                </div>
-                <div class="ProductTitle">
-                    @product.ProductName
-                </div>
-                <br />
-                <div class="ProductPrice">
-                    ₪@product.ProductPrice
-                </div>
-                @*@*<div class="addToShoppingCart">
-                        <button class="ShoppingButProduct1">
-                            <span class="text">הוספה לסל</span>
-                        </button>
-                    </div>*@
-                <i class="fas fa-shopping-bag"></i>
-                <span class="text">
-                    @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = product.CategoryId, productId = product.ProductID }, new { @class = "my-class" })
-                </span>
-                <br />
-
-            </div>
+        @{
+            const int countInPage = 8;
+            var productsByPage = new List<AmiamStore.Models.ProductModel[]>();
+            var pageNumber = 0;
+            while (true)
+            {
+                var producetOfSinglePage = Model.Products.Skip(pageNumber * countInPage).Take(countInPage).ToArray();
+                if (producetOfSinglePage.Any())
+                {
+                    productsByPage.Add(producetOfSinglePage);
+                    pageNumber++;
+                }
+                else
+                {
+                    break;
+                }
+            }
         }
-    </div>
+        
+        @for(var i=0;i<productsByPage.Count;i++)
+         {
+                var page = productsByPage[i];
+        <div class="@string.Format("products-page-{0}", i+1) products-page">
+            @foreach (var product in page)
+            {
+                <div class="Product1">
 
-    
+                    <a href="/ProductDetails/ProductDetails/@product.ProductID"><img class="img" style="width:300px" src="\Images\@product.ProductImage"></a>
+                    <div class="horizontal_dotted_line"></div>
+                    <div class="starRating">
+                        <input type="radio" name="star" class="star" /><label class="label" for="star"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star2"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star3"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star4"></label>
+                        <input type="radio" name="star" class="star" /><label class="label" for="star5"></label>
+                    </div>
+                    <div class="ProductTitle">
+                        @product.ProductName
+                    </div>
+                    <br />
+                    <div class="ProductPrice">
+                        ₪@product.ProductPrice
+                    </div>
+                    @*@*<div class="addToShoppingCart">
+                    <button class="ShoppingButProduct1">
+                        <span class="text">הוספה לסל</span>
+                    </button>
+                </div>*@
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="text">
+                        @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = product.CategoryId, productId = product.ProductID }, new { @class = "my-class" })
+                    </span>
+                    <br />
+
+                </div>
+            }
+        </div>
+        }
+
+    </div>
+    <ul id="pagination-demo" class="pagination-lg"></ul>
+    <script src="~/Scripts/jquery.twbsPagination.min.js"></script>
+    <script>
+        $('#pagination-demo').twbsPagination({
+            totalPages: @productsByPage.Count,
+            visiblePages: 5, 
+            onPageClick: function (event, page) {
+                $('.products-page').hide();
+                console.log(page);
+                $('.products-page-' + page).show();
+            }
+        });
+        $('.products-page-1').show();
+    </script>
+
 </div>
 <div class="lineMaster">
     <img class="imageLogo" src="~/Images/footer-logoWhite.png" />
