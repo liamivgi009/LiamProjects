@@ -240,6 +240,7 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\ProductsPageModel.cs" />
+    <Compile Include="Models\SerchProductsModel.cs" />
     <Compile Include="PaymentWebService.asmx.cs">
       <DependentUpon>PaymentWebService.asmx</DependentUpon>
       <SubType>Component</SubType>

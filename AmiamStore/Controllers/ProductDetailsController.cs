@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using AmiamStore.App_BLL;
 using AmiamStore.Controllers.BaseControllers;
+using System.Linq;
 
 namespace AmiamStore.Controllers
 {
@@ -12,7 +13,7 @@ namespace AmiamStore.Controllers
         public ActionResult ProductDetails(int id)
         {
             ProductBLL bll = new ProductBLL();
-            ProductModel prod = bll.getProduct(id);
+            ProductsPageModel prod = bll.getProductById(id);
             ViewBag.Message = prod;
             return View(prod);
         }

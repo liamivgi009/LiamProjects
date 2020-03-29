@@ -11,13 +11,13 @@ namespace AmiamStore.App_DAL
         private readonly DBHelper _dbHelper = new DBHelper();
 
 
-        public DataTable GetProductByName(string ProductName)
+        public DataTable GetProductByName(string ProductNameSerched)
         {
-            string sql =
-             @" SELECT      Product.ProductName, Product.ProductID
+            var query =string.Format(
+             @" SELECT      Product.ProductName, Product.ProductID , Product.ProductImage , Product.ProductPrice , Product.ProductDescription
                 FROM        Product
-                WHERE       Product.ProductName =" + ProductName;
-            DataTable dt = _dbHelper.GetData(sql);
+                WHERE       Product.ProductName = '{0}'", ProductNameSerched);
+            DataTable dt = _dbHelper.GetData(query);
             return dt;
         }
     }

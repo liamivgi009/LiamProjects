@@ -30,5 +30,29 @@ namespace AmiamStore.App_BLL
             }
             return prod;
         }
+
+        public ProductsPageModel getProductById(int id)
+        {
+            ProductDAL dal = new ProductDAL();
+            DataTable dt = dal.getProduct(id);
+
+            // converting from a DataTable to a Product Object!
+            ProductsPageModel prod = new ProductsPageModel();
+            List<ProductModel> products = new List<ProductModel>();
+            foreach (DataRow dr in dt.Rows)
+            {
+                ProductModel product = new ProductModel();
+                product.ProductID = id;
+                product.ProductName = dr["ProductName"].ToString();
+                product.ProductImage = dr["ProductImage"].ToString();
+                product.ProductPrice = (int)dr["ProductPrice"];
+                product.ProductDescription = dr["ProductDescription"].ToString();
+                product.CatagoryName = dr["CatagoryName"].ToString();
+                product.CategoryId = (int)dr["CatagoryId"];
+                products.Add(product);
+            }
+            prod.Products = products;
+            return prod;
+        }
     }
 }

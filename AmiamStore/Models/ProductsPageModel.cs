@@ -8,6 +8,7 @@ namespace AmiamStore.Models
     public class ProductsPageModel
     {
         public List<ProductModel> Products { get; set; }
+        public string SerchedProductName { get; set; }
         public string CatagoryDescription { get; set; }
         public int[] MostPopularProducts { get; set; }
         public string PotionalCustomerName { get; set; }

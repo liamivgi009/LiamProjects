@@ -1,4 +1,4 @@
-﻿@model AmiamStore.Models.ProductModel
+﻿@model AmiamStore.Models.ProductsPageModel
 @{
     ViewBag.Title = "ProductDetails";
     Layout = "~/Views/Share/MasterPage.cshtml";
@@ -56,33 +56,33 @@ else
     <div class="boxProduct">
         <div class="ProductDetails">
             <h1 class="titleLuminous">
-                @data.ProductName
+                @Model.Products.First().ProductName
             </h1>
             <span class="ProductPrice">
-                ₪@data.ProductPrice
+                ₪@Model.Products.First().ProductPrice
             </span>
             <br />
             <div class="LinkBut">
                 <i class="fas fa-shopping-bag"></i>
-                @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = data.CategoryId, productId = data.ProductID }, new { @class = "ShoppingButProduct1" })
+                @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = Model.Products.First().CategoryId, productId = @Model.Products.First().ProductID }, new { @class = "ShoppingButProduct1" })
             </div>
             <div class="CatagoryTitle">
                 :קטגוריה
             </div>
-                @Html.ActionLink(Model.CatagoryName, "ProductsPage", "ProductsPage", new { id = Model.CategoryId, productId = Model.ProductID }, new { @class = "But" })
+                @Html.ActionLink(@Model.Products.First().CatagoryName, "ProductsPage", "ProductsPage", new { id = Model.Products.First().CategoryId, productId = Model.Products.First().ProductID }, new { @class = "But" })
             <div class="Description">
                 <div class="DescriptionTitle">
                     תיאור
                 </div>
                 <textarea class="inputDescription" rows="13" cols="70">
 
-                    @data.ProductDescription
+                    @Model.Products.First().ProductDescription
 
                 </textarea>
             </div>
         </div>
         <div class="ProductImage">
-            <img class="image" src="\Images\@data.ProductImage">
+            <img class="image" src="\Images\@Model.Products.First().ProductImage">
         </div>
     </div>
 }

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model AmiamStore.Models.ProductsPageModel
+@{
     Layout = null;
 
 }
@@ -31,11 +32,12 @@
             </a>
         </span>
         <div class="SerchBox">
-            <input type="text" placeholder="חיפוש" class="serch-txt" />
-            <a class="serch-btn" href="../Share/SerchTable" style="text-decoration:none">
-                <i class="fas fa-search"></i>
-            </a>
-        </div>
+                @Html.TextBoxFor(m => m.SerchedProductName, new { @class = "serch-txt", placeholder = "חיפוש" })
+                @Html.ValidationMessageFor(m => m.SerchedProductName)
+                <button type="submit" class="serch-btn" href="../Share/SerchTable" style="text-decoration:none">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
     </div>
     <div class="div2">
         <a href="~/ShoppingCart/CartView" class="shoppingCart" style="text-decoration:none">

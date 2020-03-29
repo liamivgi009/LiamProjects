@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using AmiamStore.App_DAL;
 using System.Data;
 using AmiamStore.Models;
+using System.Web.UI.WebControls;
 
 namespace AmiamStore.Controllers
 {
@@ -16,15 +17,8 @@ namespace AmiamStore.Controllers
         // GET: Share
         [HttpGet]
         public ActionResult MasterPage()
-        { 
-            return View();
-        }
-       [HttpPost]
-        public ActionResult MasterPage(string ProductSerch)
         {
-            MasterDAL c = new MasterDAL();
-            List<ProductModel> ProductSerchResult = ConvertDataTableToList(ProductSerch);
-            ViewBag.Message = ProductSerchResult;
+
             return View();
         }
         public List<ProductModel> ConvertDataTableToList(string ProductSerch)
@@ -40,14 +34,30 @@ namespace AmiamStore.Controllers
                 product.ProductImage = dr["ProductImage"].ToString();
                 product.ProductPrice = (int)dr["ProductPrice"];
                 product.ProductDescription = dr["ProductDescription"].ToString();
-                product.CatagoryName = dr["CatagoryName"].ToString();
                 productsSerch.Add(product);
             }
             return productsSerch;
         }
-        public ActionResult SerchTable()
+
+        [HttpGet]
+        public ActionResult SerchTable(string ProductName)
         {
-            return View();
+            MasterDAL c = new MasterDAL();
+            List<ProductModel> ProductSerchResult = ConvertDataTableToList(ProductName);
+            ProductsPageModel model = new ProductsPageModel();
+            model.Products = ProductSerchResult;
+            model.SerchedProductName = ProductName;
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult SerchTable(ProductsPageModel model)
+        {
+            MasterDAL c = new MasterDAL();
+            List<ProductModel> ProductSerchResult = ConvertDataTableToList(model.SerchedProductName);
+            model.Products = ProductSerchResult;
+            model.SerchedProductName = model.SerchedProductName;
+            return View(model);
         }
     }
 }
