@@ -42,6 +42,33 @@ namespace AmiamStore.App_BLL
             d.CatagoryDescription = CDescription;
             return d;
         }
+
+        private List<ProductModel> GetProducts(DataTable dataTable)
+        {
+            List<ProductModel> products = new List<ProductModel>();
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                ProductModel product = new ProductModel();
+                product.ProductID = (int)dr["ProductID"];
+                product.ProductName = dr["ProductName"].ToString();
+                product.ProductImage = dr["ProductImage"].ToString();
+                product.ProductPrice = (int)dr["ProductPrice"];
+                product.ProductDescription = dr["ProductDescription"].ToString();
+                products.Add(product);
+            }
+            return products;
+
+        }
+
+        public ProductsPageModel SearchProducts(string productName)
+        {
+            ProductsPageDAL dal = new ProductsPageDAL();
+            DataTable dt = dal.GetProductByName(productName);
+            ProductsPageModel d = new ProductsPageModel();
+            d.Products = GetProducts(dt);
+            return d;
+        }
+
         public ProductsPageModel GetProductsList()
         {
             ProductsPageDAL dal = new ProductsPageDAL();

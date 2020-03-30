@@ -1,0 +1,16 @@
+﻿@model AmiamStore.Models.SearchRequestModel
+
+<div class="SerchBox">
+    @using (Html.BeginForm("ProductsSearchPage","ProductsPage",FormMethod.Get, new { }))
+    {
+        <div class="wrap">
+            <div class="search">
+                @Html.TextBoxFor(m => m.ProductName, new { @class = "searchTerm", placeholder = "חיפוש" })
+                <button type="submit" class="searchButton" style="text-decoration:none">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+
+    }
+</div>

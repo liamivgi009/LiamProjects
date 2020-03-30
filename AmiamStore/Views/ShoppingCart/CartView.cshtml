@@ -9,9 +9,6 @@
 <link rel="stylesheet" href="styles.css">
 
 @{ var currentUser = Html.GetCurrentUser(); }
-@{
-    var data = ViewBag.Message;
-}
 @if (currentUser == null)
 {
     <div class="Box">
@@ -80,7 +77,7 @@ else
                         </div>
                         <div class="card space icon-relative">
                             <label class="label">Card number:</label>
-                            @Html.TextBoxFor(m => m.CreditCardNumber, new { placeholder = "Card Number", @class = "input", data_mask = "0000 0000 0000 0000" })
+                            @Html.TextBoxFor(m => m.CreditCardNumber, new { placeholder = "Card Number", @class = "input" })
                             <i class="far fa-credit-card"></i>
                         </div>
                         <div class="card-grp space">

@@ -18,7 +18,6 @@ namespace AmiamStore.Controllers
         public ActionResult CartView()
         {
             CartViewModel model = new CartViewModel();
-            ProductsPageModel c = new ProductsPageModel();
             model.Products = GetCart();
             model.OrderAmount = GetAmountToCharge();
             return View(model);

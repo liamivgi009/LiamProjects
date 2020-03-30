@@ -11,4 +11,9 @@ namespace AmiamStore.Models
         public string SerchedProductName { get; set; }
 
     }
+
+    public class SearchRequestModel
+    {
+        public string ProductName { get; set; }
+    }
 }

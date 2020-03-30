@@ -20,15 +20,15 @@ namespace AmiamStore
         public static PaymentManager _paymentManager = new PaymentManager();
 
         [WebMethod]
-        public bool Pay(string holderName, string creditCardNumber, string cvv, string expirityDate, double amountToCharge)
+        public double DiscountForMasterCardClients(string holderName, string creditCardNumber, string cvv, string expirityDate, double amountToPay)
         {
-            PaymentMethod o = new PaymentMethod(holderName,creditCardNumber,cvv,expirityDate);
-            List<PaymentMethod> payments = new List<PaymentMethod>();
-            string month = expirityDate.Substring(0, 2);
-            string year = expirityDate.Substring(4,3);
-            if (cvv.Length == 3 && creditCardNumber.Length == 19 && int.Parse(month) > 0 && int.Parse(month) <= 12 && int.Parse(year) > 20)
-                return true;
-            return false;
+            if (_paymentManager.IsMasterCardHolder(creditCardNumber) && _paymentManager.Pay(holderName, creditCardNumber, cvv, expirityDate, amountToPay))
+            {
+                double UpdatedAmountToPay = ((amountToPay * 100) / 10);
+                return UpdatedAmountToPay;
+            }
+            else
+                return -1;
         }
     }
 
@@ -36,6 +36,30 @@ namespace AmiamStore
     {
         private List<PaymentMethod> _paymentMethods = new List<PaymentMethod>();
 
+        public bool Pay(string holderName, string creditCardNumber, string cvv, string expirityDate, double amountToCharge)
+        {
+            PaymentMethod o = new PaymentMethod(holderName, creditCardNumber, cvv, expirityDate);
+            List<PaymentMethod> payments = new List<PaymentMethod>();
+            string month = expirityDate.Substring(0, 2);
+            string year = expirityDate.Substring(4, 3);
+            if (cvv.Length == 3 && creditCardNumber.Length == 19 && int.Parse(month) > 0 && int.Parse(month) <= 12 && int.Parse(year) > 20)
+                return true;
+            return false;
+        }
+        public bool IsMasterCardHolder(string creditCardNumber)
+        {
+         if(CheckIfCreditCardNumberVerify(creditCardNumber))
+                if (creditCardNumber.Length == 16)
+                    return true;
+               return false;
+
+        }
+        public bool CheckIfCreditCardNumberVerify(string creditCardNumber)
+        {
+            if (creditCardNumber.Length == 16 || creditCardNumber.Length == 15)
+                return true;
+            return false;
+        }
         public List<PaymentMethod> LoadSavedPayments()
         {
             List<PaymentMethod> SavedPayments = new List<PaymentMethod>(); PaymentRepository c = new PaymentRepository();

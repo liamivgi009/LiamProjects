@@ -6,7 +6,7 @@
 
 <h1>
     תוצאות החיפוש עבור : 
-    @Model.SerchedProductName
+    @*Model.SerchedProductName*@
 </h1>
 <link href="~/Styles/ProductsPageStyle.css" rel="stylesheet" />
 <div class="safteyProducts">
@@ -38,14 +38,6 @@
                 <div class="Product1">
 
                     <a href="/ProductDetails/ProductDetails/@product.ProductID"><img class="img" style="width:300px" src="\Images\@product.ProductImage"></a>
-                    <div class="horizontal_dotted_line"></div>
-                    <div class="starRating">
-                        <input type="radio" name="star" class="star" /><label class="label" for="star"></label>
-                        <input type="radio" name="star" class="star" /><label class="label" for="star2"></label>
-                        <input type="radio" name="star" class="star" /><label class="label" for="star3"></label>
-                        <input type="radio" name="star" class="star" /><label class="label" for="star4"></label>
-                        <input type="radio" name="star" class="star" /><label class="label" for="star5"></label>
-                    </div>
                     <div class="ProductTitle">
                         @product.ProductName
                     </div>

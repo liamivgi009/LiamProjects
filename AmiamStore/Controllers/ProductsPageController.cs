@@ -16,7 +16,13 @@ namespace AmiamStore.Controllers
         private ProductsPageBLL _productsService = new ProductsPageBLL();
 
         private string strCart = "Cart";
-        
+
+        [HttpGet]
+        public ActionResult ProductsSearchPage(string productName)
+        {
+            var model =_productsService.SearchProducts(productName);
+            return View("ProductsPage", model);
+        }
 
         public ActionResult ProductsPage(int id, int? productId)
         {

@@ -16,7 +16,7 @@ namespace AmiamStore.Controllers
         public ShareController() : base(false) { }
         // GET: Share
         [HttpGet]
-        public ActionResult MasterPage()
+        public ActionResult SearchBox()
         {
 
             return View();
@@ -39,25 +39,25 @@ namespace AmiamStore.Controllers
             return productsSerch;
         }
 
-        [HttpGet]
-        public ActionResult SerchTable(string ProductName)
-        {
-            MasterDAL c = new MasterDAL();
-            List<ProductModel> ProductSerchResult = ConvertDataTableToList(ProductName);
-            ProductsPageModel model = new ProductsPageModel();
-            model.Products = ProductSerchResult;
-            model.SerchedProductName = ProductName;
-            return View(model);
-        }
+        //[HttpGet]
+        //public ActionResult SerchTable(string ProductName)
+        //{
+        //    MasterDAL c = new MasterDAL();
+        //    List<ProductModel> ProductSerchResult = ConvertDataTableToList(ProductName);
+        //    ProductsPageModel model = new ProductsPageModel();
+        //    model.Products = ProductSerchResult;
+        //    model.SerchedProductName = ProductName;
+        //    return View(model);
+        //}
 
-        [HttpPost]
-        public ActionResult SerchTable(ProductsPageModel model)
-        {
-            MasterDAL c = new MasterDAL();
-            List<ProductModel> ProductSerchResult = ConvertDataTableToList(model.SerchedProductName);
-            model.Products = ProductSerchResult;
-            model.SerchedProductName = model.SerchedProductName;
-            return View(model);
-        }
+        //[HttpPost]
+        //public ActionResult SerchTable(ProductsPageModel model)
+        //{
+        //    MasterDAL c = new MasterDAL();
+        //    List<ProductModel> ProductSerchResult = ConvertDataTableToList(model.SerchedProductName);
+        //    model.Products = ProductSerchResult;
+        //    model.SerchedProductName = model.SerchedProductName;
+        //    return View(model);
+        //}
     }
 }
