@@ -1,0 +1,58 @@
+﻿@model AmiamStore.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Share/MasterPage.cshtml";
+}
+<head>
+    <script src="https://kit.fontawesome.com/feb67790c5.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Styles/Register.css" rel="stylesheet" />
+</head>
+<main class="body">
+    <div class="box">
+        <h1>:הרשמה לאתר</h1>
+        <form method="post" class="form" action="">
+            @using (Html.BeginForm("Register", "Register", FormMethod.Post, new { @class = "form" }))
+            {
+            <div class="div1">
+                @Html.Label(":שם מלא", new { @class = "label" })
+                @Html.TextBoxFor(m => m.Name, new {@class = "in1" })
+                @Html.ValidationMessageFor(m => m.Name)
+                <br />
+            </div>
+
+                <div class="div1">
+                    @Html.Label(":שם החברה", new { @class = "label" })
+                    @Html.TextBoxFor(m => m.CompanyName, new { @class = "in1" })
+                    @Html.ValidationMessageFor(m => m.CompanyName)
+                    <br />
+                </div>
+                <div class="div1">
+                    @Html.Label(":אימייל", new { @class = "label" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "in1English" , type = "email"})
+                    @Html.ValidationMessageFor(m => m.Email)
+                    <br />
+                </div>
+                <div class="div1">
+                    @Html.Label(":טלפון", new { @class = "label" })
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "in1"})
+                    @Html.ValidationMessageFor(m => m.Phone)
+                    <br />
+                </div>
+                <div class="div1">
+                    @Html.Label(":סיסמא", new { @class = "label" })
+                    @Html.PasswordFor(m => m.Password, new {@class = "in1" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                    <br />
+                </div>
+                <input class="Submit" type="submit" name="" value="שלח" />
+            }
+
+        </form>
+
+    </div>
+    <div class="lineMasterRegister">
+        <img src="~/Images/footer-logoWhite.png" />
+    </div>
+</main>
+

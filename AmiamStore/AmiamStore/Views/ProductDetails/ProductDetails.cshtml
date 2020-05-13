@@ -1,0 +1,169 @@
+﻿@model AmiamStore.Models.ProductsPageModel
+@{
+    ViewBag.Title = "ProductDetails";
+    Layout = "~/Views/Share/MasterPage.cshtml";
+}
+<link href="~/Styles/ProductStyle.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/ProductPageScript.js"></script>
+@{
+    var data = ViewBag.Message;
+}
+@{ var currentUser = Html.GetCurrentUser();}
+
+@if (currentUser != null && currentUser.UserType == AmiamStore.App_BLL.UserType.Manager)
+{
+    <div class="boxProduct">
+        <div class="ProductDetails">
+            <textarea class="titleLuminous" rows="2" cols="10">@data.ProductName</textarea>
+            <textarea class="ProductPrice" rows="2" cols="5">
+                ₪@data.ProductPrice
+            </textarea>
+            @*<div class="addToShoppingCart">
+                    <button class="ShoppingButProduct1">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="text">הוספה לסל</span>
+                    </button>
+                </div>*@
+            <span class="text">
+                @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = data.CategoryId, productId = data.ProductID }, new { @class = "my-class" })
+            </span>
+            <div class="CatagoryTitle">
+                :קטגוריה
+            </div>
+            <a href="../SafteyProducts/SafteyProductsPage" class="Catagory">
+                מוצרי בטיחות
+            </a>
+            <div class="Description">
+                <div class="DescriptionTitle">
+                    תיאור
+                </div>
+                <textarea class="inputDescription" rows="13" cols="70">
+
+                    @data.ProductDescription
+
+                </textarea>
+            </div>
+        </div>
+        <div class="ProductImage">
+            <img class="image" src="\Images\@data.ProductImage">
+        </div>
+    </div>
+}
+else
+{
+    <div class="boxProduct">
+        <div class="ProductDetails">
+            <h1 class="titleLuminous">
+                @Model.Products.First().ProductName
+            </h1>
+            <span class="ProductPrice">
+                ₪@Model.Products.First().ProductPrice
+            </span>
+            <br />
+            <div class="LinkBut">
+                <i class="fas fa-shopping-bag"></i>
+                @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = Model.Products.First().CategoryId, productId = @Model.Products.First().ProductID }, new { @class = "ShoppingButProduct1" })
+            </div>
+            <div class="CatagoryTitle">
+                :קטגוריה
+            </div>
+                @Html.ActionLink(@Model.Products.First().CatagoryName, "ProductsPage", "ProductsPage", new { id = Model.Products.First().CategoryId, productId = Model.Products.First().ProductID }, new { @class = "But" })
+            <div class="Description">
+                <div class="DescriptionTitle">
+                    תיאור
+                </div>
+                <textarea class="inputDescription" rows="4" cols="20">
+                  @Model.Products.First().ProductDescription
+                </textarea>
+            </div>
+        </div>
+        <div class="ProductImage">
+            <img class="image" src="\Images\@Model.Products.First().ProductImage">
+        </div>
+    </div>
+    <script>
+        $('document').ready(function () {
+            $('.inputDescription').each(function () {
+                $(this).val($(this).val().trim());
+            }
+            );
+        });
+    </script>
+}
+
+    <div class="RelatedProducts">
+        <div class="RelatedProductsLine">
+            <h3 class="RelatedProductsTitle">
+                :מוצרים קשורים
+            </h3>
+        </div>
+        <div class="Product">
+            <a href="@Model.CommonProducts.First().ProductID">
+                <img class="img" src="\Images\@Model.CommonProducts.First().ProductImage">
+            </a>
+            <div class="ProductTitle">
+                @Model.CommonProducts.First().ProductName
+            </div>
+            <br />
+            <div class="ProductPrice">
+                ₪@Model.CommonProducts.First().ProductPrice
+            </div>
+            <i class="fas fa-shopping-bag"></i>
+            @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = 1, productId = @Model.CommonProducts.First().ProductID }, new { @class = "ShoppingButProduct1" })
+
+        </div>
+        <div class="Product">
+            <a href="@Model.CommonProducts[1].ProductID">
+                <img class="img" src="\Images\@Model.CommonProducts[1].ProductImage">
+            </a>
+            <div class="ProductTitle">
+                @Model.CommonProducts[1].ProductName
+            </div>
+            <br />
+            <div class="ProductPrice">
+                ₪@Model.CommonProducts[1].ProductPrice
+            </div>
+            <i class="fas fa-shopping-bag"></i>
+            @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = 1, productId = Model.CommonProducts[1].ProductID }, new { @class = "ShoppingButProduct1" })
+
+        </div>
+        <div class="Product">
+            <a href="@Model.CommonProducts[2].ProductID">
+                <img class="img" src="\Images\@Model.CommonProducts[2].ProductImage">
+            </a>
+            <div class="ProductTitle">
+                @Model.CommonProducts[2].ProductName
+            </div>
+            <br />
+            <div class="ProductPrice">
+                ₪@Model.CommonProducts[2].ProductPrice
+            </div>
+            <i class="fas fa-shopping-bag"></i>
+            @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = 1, productId = @Model.CommonProducts[2].ProductID }, new { @class = "ShoppingButProduct1" })
+
+        </div>
+        <div class="Product">
+            <a href="@Model.CommonProducts[3].ProductID">
+                <img class="img" src="\Images\@Model.CommonProducts[3].ProductImage">
+            </a>
+            <div class="ProductTitle">
+                @Model.CommonProducts[3].ProductName
+            </div>
+            <br />
+            <div class="ProductPrice">
+                ₪@Model.CommonProducts[3].ProductPrice
+            </div>
+            <i class="fas fa-shopping-bag"></i>
+            @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = 1, productId = Model.CommonProducts[3].ProductID }, new { @class = "ShoppingButProduct1" })
+
+        </div>
+    </div>
+<div class="lineMaster">
+    <img class="imageLogo" src="~/Images/footer-logoWhite.png" />
+</div>
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

@@ -1,0 +1,239 @@
+﻿*{margin:0;padding:0}
+.logo{display:inline-block;
+      margin-left:40px;
+}
+.menu{display:inline-block;
+      margin-left:500px;
+      margin-top:3%;
+}
+.Serch{
+    margin-top:-17px;
+    margin-left:-420px;
+}
+.body{text-align:center;}
+.loginIcon{display:inline-block;margin-left:10px;color:black;}
+.Shoop{color:black;}
+.div2 {
+    display:block;
+    margin-top: -85px;
+    margin-left: -430px;
+    margin-bottom:5%;
+}
+.li1{margin-left:15px;color:black;
+     width:150px;
+     height:150px;
+     margin-top:13%; 
+}
+.shoppingCart{
+    color:black;
+    display:inline-block
+}
+.button {
+    margin-left: -20px;
+}
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+.Input{
+    width:90px;
+}
+.wrapFooter {
+    position: absolute;
+    left: 53%;
+}
+.FormButton {
+    margin-right: 2%;
+    width: 40px;
+    background: #0066A2;
+    border-style: outset;
+    border-color: #0066A2;
+    height: 50px;
+    width: 100px;
+    font: bold 15px arial, sans-serif;
+    text-shadow: none;
+    margin-top: 8%;
+}
+.FormButton:hover{
+    color:white;
+ transition-duration: 0.4s;
+
+}
+.FooterInput {
+    width: 100%;
+    border: 3px solid blue;
+    padding: 5px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: blue;
+    margin-top:8%;
+}
+.searchTerm {
+    width: 100%;
+    border: 3px solid blue;
+    border-right: none;
+    padding: 5px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: blue;
+}
+
+    .searchTerm:focus {
+        color:black;
+    }
+
+.searchButton {
+    width: 40px;
+    height: 36px;
+    border: 1px solid blue;
+    background: blue;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap {
+    width: 10%;
+    position: absolute;
+    left: 35%;
+    transform: translate(-50%, -50%);
+}
+.textFooter {
+    font: bold 15px arial, sans-serif;
+}
+.RegisterIcon {
+    color: black;
+    margin-left: 10px;
+}
+.CompanyDetails {
+    float: left;
+    font-size: 20px;
+    margin-left: 33%;
+    margin-top: 1%;
+    display:inline-block;
+}
+.formBox{
+    margin-top:3%;
+    margin-left:20%;
+}
+.footer {
+    width: 1800px;
+    height: 500px;
+}
+.inputFooter {
+    width: 180px;
+    height: 25px;
+    margin-left:10px;
+    direction:rtl;
+}
+.PaymentsIcon{
+   float:left;
+   margin-top:12%;
+   margin-left:-15%;
+}
+/*.FooterForm {
+    margin-top: 6%;
+    float:right;
+    width:500px;
+    display:inline-block;
+    margin-left:5%;
+}*/
+.LoginRegBut {
+    width:300px;
+    display:inline-block;
+    margin-top: 3%;
+    margin-left:-24%;
+}
+.butFooter {
+    background: #B9DFFF;
+    color: #fff;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px #eee;
+    text-shadow: none;
+    width: 110px;
+    height: 25px;
+    margin-top: 25px;
+    margin-left: 60%
+}
+.butFooter:hover {
+        background: blue;
+        color: #fff;
+        border: 1px solid #eee;
+        border-radius: 20px;
+        box-shadow: 5px 5px 5px #eee;
+        text-shadow: none;
+}
+.contactNowFooter{
+    color:blue;
+    font-size:20px;
+    margin-left:70%;
+    margin-left:70%;
+    margin-bottom:20px;
+    margin-top:7%;
+}
+.blueWord{
+    color:blue;
+}
+.detailsFooter{margin-top:-3%}
+.RenderBody {
+    background-color: #f4f4f4;
+}
+.RegisterButtonFoo {
+    font-size: 24px;
+    display: inline;
+    background-color:dodgerblue;
+    color:white;
+}
+.LoginButtonFoo {
+    font-size: 24px;
+    display: inline-block;
+    color: white;
+    background-color: darkblue;
+}
+.FormButtons {
+    display: inline-block;
+}
+.SlashImage{
+    display:inline-block;
+    width:100px;
+    height:50px;
+}
+.Index {
+    font-size: 40px;
+    text-decoration: none;
+    font-family: Kommissar;
+    font-weight:900;
+    margin-left: 0.4%;
+    color: blue;
+    margin-right:3%;
+}
+    .Index:hover {
+        text-decoration: underline #eee
+    }
+.footerLinks{
+    margin-top:3%;
+    margin-bottom:3%;
+    direction:rtl;
+}
+.Icon {
+    font-size: 40px;
+    text-decoration: none;
+    font-family: Kommissar;
+    font-weight: 900;
+    margin-right: 1%;
+    color: blue;
+}
+.Icon:hover {
+        text-decoration: underline #eee;
+}
+.spanFooter1 {
+    color: #c3c5c8;
+    float:left;
+    margin-top:0.8%;
+    margin-left:15%;
+}

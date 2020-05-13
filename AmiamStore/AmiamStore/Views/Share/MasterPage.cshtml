@@ -1,0 +1,101 @@
+﻿
+@{
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="https://kit.fontawesome.com/feb67790c5.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Styles/MasterPageStyle.css" rel="stylesheet" />
+</head>
+<body class="body">
+    @{ var currentUser = Html.GetCurrentUser(); }
+    @{
+        var data = ViewBag.Message;
+    }
+    <div class="div1">
+        <div class="menu">
+            <a class="li1" href="/Home/Index" style="text-decoration:none"><span>עמוד הבית</span></a><i class="fas fa-circle"></i>
+            @Html.ActionLink("ביגוד מקצועי", "ProductsPage", "ProductsPage", new { id = 1 }, new { style = "text-decoration:none", @class = "li1" })<i class="fas fa-circle"></i>
+            @Html.ActionLink("מוצרי בטיחות", "ProductsPage", "ProductsPage", new { id = 2 }, new { style = "text-decoration:none", @class = "li1" })<i class="fas fa-circle"></i>
+            @Html.ActionLink("כפפות עבודה", "ProductsPage", "ProductsPage", new { id = 3 }, new { style = "text-decoration:none", @class = "li1" })<i class="fas fa-circle"></i>
+            @Html.ActionLink("נעלי עבודה ובטיחות", "ProductsPage", "ProductsPage", new { id = 4 }, new { style = "text-decoration:none", @class = "li1" })<i class="fas fa-circle"></i>
+            <a class="li1" href="/ContactUs/ContactUsPage" style="text-decoration:none"><span>צור קשר</span></a>  <i class="fas fa-circle"></i>
+        </div>
+        <span class="logo">
+            <a href="/Home/Index">
+                <img src="../../Images/logo.png" />
+            </a>
+        </span>
+        @Html.Action("SearchBox", "Share")
+    </div>
+    <div class="div2">
+        <a href="~/ShoppingCart/CartView" class="shoppingCart" style="text-decoration:none">
+            <i class="fas fa-shopping-cart"></i>
+            <span>סל קניות</span>
+        </a>
+
+        @if (currentUser == null)
+        {
+            <a href="~/Login/LoginPage" class="loginIcon" style="text-decoration:none">
+                <i class="fas fa-sign-in-alt"></i>
+                <span>התחבר</span>
+            </a>
+            <a href="~/Register/Register" class="RegisterIcon" style="text-decoration:none">
+                <i class="fas fa-user-plus"></i>
+                <span>הרשמה</span>
+            </a>
+        }
+
+
+        @if (currentUser != null)
+        {
+            <a href="~/Login/Logout" class="RegisterIcon" style="text-decoration:none">
+                <i class="fas fa-user-plus"></i>
+                <span>התנתק</span>
+            </a>
+        }
+    </div>
+    <div class="RenderBody">
+        @RenderBody()
+    </div>
+    <footer class="footer">
+        <div class="CompanyDetails">
+            <span class="blueWord"> להצעת מחיר</span>
+            <br />
+            מחירים מיוחדים
+            <br />
+            למכירה סיטונאית
+            <br />
+            יריב 054-7788-383
+            <br />
+            ליבנת 054-7788-381
+            <br />
+            amiam1@inter.net.il
+            <br />
+            <br />
+            Liam Ivgi 2020      ©
+        </div>
+        <span class="PaymentsIcon">
+            <img src="~/Images/payment-icons.png" />
+        </span>
+        @if (currentUser == null)
+        {
+            <div class="LoginRegBut">
+                <form action="../Login/LoginPage" class="FormButtons">
+                    <input class="LoginButtonFoo" type="submit" value="התחבר לאתר" />
+                </form>
+                <form action="../Register/Register" class="FormButtons">
+                    <input class="RegisterButtonFoo" type="submit" value="הירשם לאתר" />
+                </form>
+            </div>
+        }
+        @Html.Action("FormFooter", "Share")
+
+    </footer>
+</body>
+</html>

@@ -1,0 +1,123 @@
+﻿@model AmiamStore.Models.CartViewModel
+@{
+    ViewBag.Title = "CartView";
+    Layout = "~/Views/Share/MasterPage.cshtml";
+}
+<script src="~/Scripts/DataBaseTable.js"></script>
+<link href="~/Styles/ShoppingCartStyle.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
+<link rel="stylesheet" href="styles.css">
+
+@{ var currentUser = Html.GetCurrentUser(); }
+@if (currentUser == null)
+{
+    <div class="Box">
+        <div class="Login">
+            <h1>משתמש רשום? אנא התחבר לחשבונך.</h1>
+            <input class="ButLogin" type="button" value="לחץ למעבר להתחברות" onclick="location.href='@Url.Action("LoginPage", "Login")'" />
+        </div>
+        <div class="Register">
+            <h1>חדש אצלנו באתר? צור חשבון חדש</h1>
+            <input class="ButRegister" type="button" value="לחץ למעבר להרשמה " onclick="location.href='@Url.Action("Register", "Register")'" />
+        </div>
+    </div>
+}
+else
+{
+    <form action="" method="post" name="f">
+        <table id="attendees" class="attendees" border="1">
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Sub Total</th>
+            </tr>
+            @foreach (var cart in Model.Products)
+            {
+                <tr>
+                    <td>@cart.product.ProductName</td>
+                    <td>@cart.product.ProductPrice</td>
+                    <td>@cart.Quantity</td>
+                    <td>@(String.Format("{0:N0}", cart.product.ProductPrice * cart.Quantity))</td>
+                    <td>
+                        @Html.ActionLink("מחק", "Delete", "ShoppingCart", new { id = cart.product.ProductID, @class = "Delete" },
+    new { onclick = "return confirm ('אתה בטוח שאתה רוצה למחוק את המוצר?')" })
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td class="td" colspan="3">סה"כ:</td>
+                <td>
+                    @{
+                    }
+
+                    @Model.OrderAmount
+                </td>
+            </tr>
+        </table>
+
+    </form>
+    if (Model.OrderAmount != 0)
+    {
+        <div class="wrapper">
+            <div class="payment">
+                <div class="payment-logo">
+                    <p>p</p>
+                </div>
+
+                <h2>Payment Gateway</h2>
+                @using (Html.BeginForm())
+                {
+                    <div class="form">
+                        <div class="card space icon-relative">
+                            <label class="label">Card holder:</label>
+                            @Html.TextBoxFor(m => m.CardHolder, new { placeholder = "Full Name", @class = "input" })
+                            <i class="fas fa-user"></i>
+                            @Html.ValidationMessageFor(m => m.CardHolder)
+                        </div>
+                        <div class="card space icon-relative">
+                            <label class="label">Card number:</label>
+                            @Html.TextBoxFor(m => m.CreditCardNumber, new { placeholder = "Card Number", @class = "input" })
+                            <i class="far fa-credit-card"></i>
+                        </div>
+                        <div class="card-grp space">
+                            <div class="card-item icon-relative">
+                                <label class="label">Expiry date:</label>
+                                @Html.TextBoxFor(m => m.ExpiryDate, new { placeholder = "00 / 00", @class = "input", data_mask = "00 / 00" })
+                                <i class="far fa-calendar-alt"></i>
+                                @Html.ValidationMessageFor(m => m.ExpiryDate)
+                            </div>
+                            <div class="card-item icon-relative">
+                                <label class="label">CVV:</label>
+                                @Html.TextBoxFor(m => m.Cvv, new { placeholder = "000", @class = "input", data_mask = "000" })
+                                <i class="fas fa-lock"></i>
+                                @Html.ValidationMessageFor(m => m.Cvv)
+                            </div>
+                        </div>
+
+                        <div class="btn pay-button">
+                            Pay
+                        </div>
+
+                    </div>
+                    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+                    <script>
+                        $('.pay-button').click(function () {
+                            this.parentNode.parentNode.submit();
+                        });
+                    </script>
+                }
+            </div>
+        </div>
+       
+
+
+
+    }
+}
+
+<div class="lineMaster">
+    <img class="imageLogo" src="~/Images/footer-logoWhite.png" />
+</div>
+

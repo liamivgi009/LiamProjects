@@ -1,0 +1,15 @@
+﻿*{margin:0;padding:0}
+.ErrorResgtrition{
+    margin-top:5%;
+    margin-bottom:20%;
+}
+.titleH1{
+    margin-bottom:2%;
+}
+.LinkToRgisterPage{
+    color:black;
+}
+.LinkToRgisterPage:hover{
+     color: black;
+    border: solid blue 1px;
+}

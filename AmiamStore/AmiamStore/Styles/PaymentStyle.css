@@ -1,0 +1,29 @@
+﻿*{margin:0;padding:0}
+.FormPayment{
+    margin-top:4%;
+}
+.label{
+    display:block
+}
+.lineMaster {
+    background-image: url('../Images/Point.png');
+    background-repeat: repeat-x;
+    background-position: bottom;
+}
+
+.imageLogo {
+    margin-bottom: -1.2%;
+}
+.Submit{
+    margin-bottom:1%;
+}
+.CompleteOrderTitle{
+    margin-top:3%;
+    margin-bottom:2%;
+}
+.ButPay{
+    margin-bottom:1%;
+}
+.PaymetFailedMessage{
+    margin-top:3%;
+}
