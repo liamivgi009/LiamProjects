@@ -107,7 +107,33 @@ namespace AmiamStore
 
             SmtpServer.Send(mail);
         }
+           [WebMethod]
+           public string GetCardType(string creditCardNumber)
+           {
+            if (_paymentManager.CheckIfCreditCardNumberVerify(creditCardNumber))
+            {
+                if (creditCardNumber.Length == 8)
+                    return "Isracard";
+                string startNumber = creditCardNumber.Substring(0, 2);
+                int startNum = int.Parse(startNumber);
+                else if(creditCardNumber.Length == 16 && startNum == 51 || startNum == 52 || startNum == 53 || startNum == 54 || startNum == 55)
+                    return "MasterCard";
+                string startNumberVisa = creditCardNumber.Substring(0, 1);
+                int startNumVisa = int.Parse(startNumberVisa);
+                else if(creditCardNumber.Length == 16 && startNumVisa == 4)
+                    return "Visa";
+                string startNumberAmrican = creditCardNumber.Substring(0, 2);
+                int startNumAmrican = int.Parse(startNumberAmrican);
+                else if (startNumAmrican == 27 || startNumAmrican == 37 && creditCardNumber.Length == 15)
+                    return "AmricanExpress";
+                else
+                    return "NotVaild";
 
+            }
+               
+                
+
+           }
         public class PaymentManager
         {
 
