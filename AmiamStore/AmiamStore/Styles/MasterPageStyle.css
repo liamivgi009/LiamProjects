@@ -15,7 +15,7 @@
 .Shoop{color:black;}
 .div2 {
     display:block;
-    margin-top: -85px;
+    margin-top: -65px;
     margin-left: -430px;
     margin-bottom:5%;
 }
@@ -41,7 +41,7 @@
 }
 .wrapFooter {
     position: absolute;
-    left: 53%;
+    left: 64%;
 }
 .FormButton {
     margin-right: 2%;
@@ -146,7 +146,7 @@
     width:300px;
     display:inline-block;
     margin-top: 3%;
-    margin-left:-24%;
+    margin-left:-32%;
 }
 .butFooter {
     background: #B9DFFF;
