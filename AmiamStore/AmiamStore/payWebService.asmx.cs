@@ -23,28 +23,30 @@ namespace AmiamStore
     // [System.Web.Script.Services.ScriptService]
     public class payWebService : System.Web.Services.WebService
     {
-            public static PaymentManager _paymentManager = new PaymentManager();
+        public static PaymentManager _paymentManager = new PaymentManager();
 
         CreditCardRepository DAL = new CreditCardRepository();
 
         [WebMethod]
-            public bool ConfirmPay(string holderName, string creditCardNumber, string cvv, string expirityDate, double amountToCharge,string EmailTo, List<CartModel> products)
+        public bool ConfirmPay(string holderName, string creditCardNumber, string cvv, string expirityDate, double amountToCharge, string EmailTo, List<CartModel> products)
+        {
+            if (ProperCardDetails(holderName, creditCardNumber, cvv, expirityDate, amountToCharge) && ClientHasEnoghMoney(holderName, amountToCharge, cvv, expirityDate, creditCardNumber))
             {
-                if (ProperCardDetails(holderName, creditCardNumber, cvv, expirityDate, amountToCharge) && ClientHasEnoghMoney(holderName,amountToCharge,cvv,expirityDate,creditCardNumber))
-                {
-                    amountToCharge = DiscountForMasterCardClients(creditCardNumber, amountToCharge);
-                    DAL.UpdateLine(amountToCharge, holderName, creditCardNumber, cvv, expirityDate);
-                    SendPurchaseClearanceOnEmail(EmailTo , creditCardNumber , products);
-                    return true;
-                }
-                return false;
+                amountToCharge = DiscountForMasterCardClients(creditCardNumber, amountToCharge);
+                DAL.UpdateLine(amountToCharge, holderName, creditCardNumber, cvv, expirityDate);
+                SendPurchaseClearanceOnEmail(EmailTo, creditCardNumber, products);
+                return true;
             }
+            return false;
+        }
 
 
 
-            [WebMethod]
-            public bool ProperCardDetails(string holderName, string creditCardNumber, string cvv, string expirityDate, double amountToCharge)
-            {
+        [WebMethod]
+        public bool ProperCardDetails(string holderName, string creditCardNumber, string cvv, string expirityDate, double amountToCharge)
+        {
+            if (holderName == null || creditCardNumber == null || cvv == null || expirityDate == null)
+                return false;
                 string month = expirityDate.Substring(0, 2);
                 string year = expirityDate.Substring(4, 3);
                 if (cvv.Length == 3 && creditCardNumber.Length == 16 || creditCardNumber.Length == 15 && int.Parse(month) > 0 && int.Parse(month) <= 12 && int.Parse(year) > 20)
@@ -66,6 +68,8 @@ namespace AmiamStore
             public bool ClientHasEnoghMoney(string holderName, double amountToPay , string cvv , string expirty , string creditCardNumber)
             {
             CreditCardRepository Repository = new CreditCardRepository();
+            if (holderName == null || creditCardNumber == null || cvv == null || expirty == null)
+                return false;
             if (!_paymentManager.IfCardHolderExist(holderName))
             {
                 _paymentManager.InsertIfHolderNotExist(holderName, creditCardNumber, cvv, expirty);
@@ -107,7 +111,31 @@ namespace AmiamStore
 
             SmtpServer.Send(mail);
         }
-
+            [WebMethod]
+            public string GetCardType(string creditCardNumber)
+        {
+            string startNumber = creditCardNumber.Substring(0, 2);
+            int startNum = int.Parse(startNumber);
+            string startNumberVisa = creditCardNumber.Substring(0, 1);
+            int startNumVisa = int.Parse(startNumberVisa);
+            string startNumberAmrican = creditCardNumber.Substring(0, 2);
+            int startNumAmrican = int.Parse(startNumberAmrican);
+            if (_paymentManager.CheckIfCreditCardNumberVerify(creditCardNumber))
+            {
+                if (creditCardNumber.Length == 8)
+                    return "Isracard";
+                else if (creditCardNumber.Length == 16 && startNum == 51 || startNum == 52 || startNum == 53 || startNum == 54 || startNum == 55)
+                    return "MasterCard";
+                else if (creditCardNumber.Length == 16 && startNumVisa == 4)
+                    return "Visa";
+                else if (startNumAmrican == 27 || startNumAmrican == 37 && creditCardNumber.Length == 15)
+                    return "AmricanExpress";
+                else
+                    return "NotVaild";
+            }
+            else
+                return "NotVaild";
+        }
         public class PaymentManager
         {
 
