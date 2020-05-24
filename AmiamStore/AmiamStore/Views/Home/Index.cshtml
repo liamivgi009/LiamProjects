@@ -129,7 +129,7 @@
                 </span>
                 <span class="addToShoppingCart">
                     <span><i class="fas fa-shopping-bag"></i></span>
-                    @Html.ActionLink("הוספה לסל", "Index", "Home", new { productId = Model.Products.First().ProductID }, new { @class = "ShoppingBut" })
+                    @Html.ActionLink("הוספה לסל", "Index", "Home", new { productId = Model.Products.First().ProductID}  , new { onclick = "return confirm('אתה בטוח שאתה רוצה להוסיף את המוצר לסל?');", @class = "ShoppingBut" })
                 </span>
             </div>
             <span class="vertical_dotted_line"></span>
@@ -146,8 +146,8 @@
                     <img class="ProductImg1" src="~/Images/@Model.Products[1].ProductImage" />
                 </span>
                 <span class="addToShoppingCart">
-                    <i class="fas fa-shopping-bag"></i>@Html.ActionLink("הוספה לסל", "Index", "Home", new { productId = Model.Products[1].ProductID }, new { @class = "ShoppingBut" })
-
+                    <span><i class="fas fa-shopping-bag"></i></span>
+                    @Html.ActionLink("הוספה לסל", "Index", "Home", new { productId = Model.Products[1].ProductID}, new { onclick = "return confirm('אתה בטוח שאתה רוצה להוסיף את המוצר לסל?');", @class = "ShoppingBut" })
                 </span>
             </div>
             <span class="vertical_dotted_line"></span>
@@ -165,7 +165,7 @@
                 </span>
                 <span class="addToShoppingCart">
                     <span><i class="fas fa-shopping-bag"></i></span>
-                    @Html.ActionLink("הוספה לסל", "Index", "Home", new { productId = Model.Products[2].ProductID }, new { @class = "ShoppingBut" })
+                    @Html.ActionLink("הוספה לסל", "Index", "Home", new { productId = Model.Products[2].ProductID }, new { onclick = "return confirm('אתה בטוח שאתה רוצה להוסיף את המוצר לסל?');", @class = "ShoppingBut" })
                 </span>
             </div>
         </div>

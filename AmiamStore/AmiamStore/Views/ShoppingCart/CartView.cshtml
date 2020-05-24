@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="styles.css">
 
 @{ var currentUser = Html.GetCurrentUser(); }
+@{
+    var data = ViewBag.Message;
+}
 @if (currentUser == null)
 {
     <div class="Box">
@@ -40,10 +43,13 @@ else
                     <td>@cart.Quantity</td>
                     <td>@(String.Format("{0:N0}", cart.product.ProductPrice * cart.Quantity))</td>
                     <td>
-                        @*@Html.ActionLink("מחק", "Delete", "ShoppingCart", new { id = cart.product.ProductID, @class = "Delete" },
-                        new { onclick = "return confirm ('אתה בטוח שאתה רוצה למחוק את המוצר?')" })*@
-                        <input type="checkbox" name="removefromcart" value="@(cart.product.ProductID)" style="display:none" />
-                        <input type="submit" name="updatecart" value="X" onclick="deleteItem(@(cart.product.ProductID))" class="button-2 update-cart-button" />
+                        @using (Html.BeginForm(FormMethod.Get))
+                        {
+                            @*@Html.ActionLink("מחק", "Delete", "ShoppingCart", new { id = cart.product.ProductID, @class = "Delete" },
+                                new { onclick = "return confirm ('אתה בטוח שאתה רוצה למחוק את המוצר?')" })*@
+                            <input type="checkbox" name="deletedProductID" value="@(cart.product.ProductID)" style="display:none" />
+                            <input type="submit" name="deletedProductID" value="X" onclick="deleteItem(@(cart.product.ProductID))" class="button-2 update-cart-button" />
+                        }
                     </td>
                 </tr>
             }
@@ -59,15 +65,15 @@ else
         </table>
         <script type="text/javascript">
             function deleteItem(id) {
-                var ipt = $("[name=removefromcart][value=" + id.toString() + "]");
+                var ipt = $("[name=deletedProductID][value=" + id.toString() + "]");
                 ipt.attr('checked', true);
             }
 
         </script>
     </form>
 
-        if (Model.OrderAmount != 0)
-        {
+    if (Model.OrderAmount != 0)
+    {
         <div class="wrapper">
             <div class="payment">
                 <div class="payment-logo">
@@ -121,9 +127,9 @@ else
         </div>
 
 
-                            }
+    }
 
-                        }
+}
 
 <div class="lineMaster">
     <img class="imageLogo" src="~/Images/footer-logoWhite.png" />

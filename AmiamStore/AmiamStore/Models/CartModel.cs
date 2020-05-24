@@ -21,17 +21,13 @@ namespace AmiamStore.Models
 
     public class CartViewModel
     {
-        [Required(ErrorMessage = "Card Holder is mandatory.")]
         [StringLength(20)]
         public string CardHolder { get; set; }
-        [Required(ErrorMessage = "Card Number is mandatory.")]
         [StringLength(17)]
         public string CreditCardNumber { get; set; }
-        [Required(ErrorMessage = "cvv Number is mandatory.")]
         [StringLength(3)]
         public string Cvv { get; set; }
         public double OrderAmount { get; set; }
-        [Required(ErrorMessage = "Expiry Date is mandatory.")]
         public string ExpiryDate { get; set; }
         //public int UserID { get; set; }
         public int LineOfBalance { get; set; }

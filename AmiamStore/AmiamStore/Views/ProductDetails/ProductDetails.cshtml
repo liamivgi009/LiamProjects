@@ -111,7 +111,7 @@ else
                 ₪@Model.CommonProducts.First().ProductPrice
             </div>
             <i class="fas fa-shopping-bag"></i>
-            @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = 1, productId = @Model.CommonProducts.First().ProductID }, new { @class = "ShoppingButProduct1" })
+            @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = 1, productId = @Model.CommonProducts.First().ProductID }, new { onclick = "return confirm('אתה בטוח שאתה רוצה להוסיף את המוצר לסל?');", @class = "ShoppingButProduct1" })
 
         </div>
         <div class="Product">
@@ -126,7 +126,7 @@ else
                 ₪@Model.CommonProducts[1].ProductPrice
             </div>
             <i class="fas fa-shopping-bag"></i>
-            @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = 1, productId = Model.CommonProducts[1].ProductID }, new { @class = "ShoppingButProduct1" })
+            @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = 1, productId = Model.CommonProducts[1].ProductID }, new { onclick = "return confirm('אתה בטוח שאתה רוצה להוסיף את המוצר לסל?');", @class = "ShoppingButProduct1" })
 
         </div>
         <div class="Product">
@@ -141,7 +141,7 @@ else
                 ₪@Model.CommonProducts[2].ProductPrice
             </div>
             <i class="fas fa-shopping-bag"></i>
-            @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = 1, productId = @Model.CommonProducts[2].ProductID }, new { @class = "ShoppingButProduct1" })
+            @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = 1, productId = @Model.CommonProducts[2].ProductID }, new { onclick = "return confirm('אתה בטוח שאתה רוצה להוסיף את המוצר לסל?');", @class = "ShoppingButProduct1" })
 
         </div>
         <div class="Product">
@@ -156,8 +156,7 @@ else
                 ₪@Model.CommonProducts[3].ProductPrice
             </div>
             <i class="fas fa-shopping-bag"></i>
-            @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = 1, productId = Model.CommonProducts[3].ProductID }, new { @class = "ShoppingButProduct1" })
-
+            @Html.ActionLink("הוספה לסל", "ProductsPage", "ProductsPage", new { id = 1, productId = Model.CommonProducts[3].ProductID }, new { onclick = "return confirm('אתה בטוח שאתה רוצה להוסיף את המוצר לסל?');", @class = "ShoppingButProduct1" })
         </div>
     </div>
 <div class="lineMaster">

@@ -28,7 +28,7 @@ namespace AmiamStore.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult CartView(CartViewModel c)
+        public ActionResult CartView(CartViewModel c, int? deletedProductID)
         {
             var user = manger.GetUser();
             var paymentWebService = new payWebService();
@@ -45,7 +45,16 @@ namespace AmiamStore.Controllers
                 Session.Clear();
                 return RedirectToAction("OrderComplete");
             }
-            return RedirectToAction("OrderFailed");
+            else if(deletedProductID != null)
+            {
+                CartViewModel model = new CartViewModel();
+                List<CartModel> li = GetCart();
+                model.Products = GetNewListAfterDeletedProduct(li,(int)deletedProductID);
+                model.OrderAmount = GetAmountToCharge();
+                return View(model);
+            }
+                return RedirectToAction("OrderFailed");
+
         }
         public ActionResult OrderComplete()
         {
@@ -68,6 +77,17 @@ namespace AmiamStore.Controllers
         {
             object cartList = Session[strCart];
             return cartList == null ? new List<CartModel>() : (List<CartModel>)cartList;
+        }
+        private List<CartModel> GetNewListAfterDeletedProduct(List<CartModel> list,int productNumber)
+        {
+            for(int i = 0;i<list.Count;i++)
+            {
+                if(list[i].product.ProductID == productNumber)
+                {
+                    list.RemoveAt(i);
+                }
+            }
+            return list;
         }
         private int IsExistCheck(int id)
         {
