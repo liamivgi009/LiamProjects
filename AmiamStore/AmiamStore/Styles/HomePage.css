@@ -227,7 +227,7 @@
 }
 .sliderTextImage3Header1 {
     position: absolute;
-    margin-top: -18%;
+    margin-top: -25%;
     transition: margin 2s;
     color: white;
     font-size: 43px;
@@ -235,7 +235,7 @@
 }
 .sliderTextImage3Header2 {
     position: absolute;
-    margin-top: -15%;
+    margin-top: -22%;
     transition: margin 2s;
     color: white;
     font-size: 43px;
@@ -339,7 +339,7 @@
     margin-left: 30%;
 }
 .slideTextSecond {
-    margin-left: 27%;
+    margin-left: 24%;
 }
 .ImageGlove{
     margin-left:45%;
