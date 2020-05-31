@@ -8,14 +8,14 @@ namespace AmiamStore.App_BLL
 {
     public class AuthenticationManager
     {
-        public void SaveUser(string userName,string password, UserType userType)
+        public void SaveUser(string userName,string password, UserType userType,string name)
         {
-            var currentUser = new CurrentUser(userName, userType);
+            var currentUser = new CurrentUser(userName, userType,name);
             SetSession("currentUser",currentUser);
         }
-        public void SaveUser(string userName, string password , int userType)
+        public void SaveUser(string userName, string password , int userType,string name)
         {
-            SaveUser(userName,password, (UserType)userType);
+            SaveUser(userName,password, (UserType)userType , name);
         }
 
         public CurrentUser GetUser()
@@ -46,11 +46,12 @@ namespace AmiamStore.App_BLL
         public string UserName { get; set; }
         public UserType UserType { get; set; }
         public string Password { get; set; }
-
-        public CurrentUser(string userName, UserType userType)
+        public string Name { get; set; }
+        public CurrentUser(string userName, UserType userType,string name)
         {
             UserName = userName;
             UserType = userType;
+            this.Name = name;
         }
     }
 

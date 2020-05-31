@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Net.Mail;
 using System.Web;
+using System.Web.Services.Discovery;
 
 namespace AmiamStore.App_BLL
 {
@@ -49,8 +50,14 @@ namespace AmiamStore.App_BLL
             SmtpServer.Port = 587;
             SmtpServer.Credentials = new System.Net.NetworkCredential("AmiamStore@gmail.com", "vm0547788384");
             SmtpServer.EnableSsl = true;
-
-            SmtpServer.Send(mail);
+            try
+            {
+                SmtpServer.Send(mail);
+            }
+           catch(Exception e)
+            {
+                //Handle;
+            }
         }
     }
 }

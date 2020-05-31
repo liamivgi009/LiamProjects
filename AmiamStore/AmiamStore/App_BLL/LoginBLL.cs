@@ -44,12 +44,12 @@ namespace AmiamStore.App_BLL
 
         }
 
-        public User GetSingleUser(string userName, string password)
+        public User GetSingleUser(string userName, string password,string name)
         {
             var users = GetUsers();
             try
             {
-                return users.Single(u => u.Email == userName && u.Password == password);
+                return users.Single(u => u.Email == userName && u.Password == password && u.Name == name);
             }
             catch
             {
@@ -58,5 +58,12 @@ namespace AmiamStore.App_BLL
 
         }
 
+        public string GetCustomerName(string userName)
+        {
+            CustomersRepository rep = new CustomersRepository();
+            DataTable dt = rep.GetCustomers();
+            //פעולה שמקבלת שם משתמש ומחזירה את השם הפרטי שלו
+
+        }
     }
 }

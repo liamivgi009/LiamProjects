@@ -42,7 +42,7 @@ namespace AmiamStore.Controllers
                 model.Products = GetCart();
                 model.OrderAmount = GetAmountToCharge();
                 Order.Insert(model);
-                Session.Clear();
+                Session[strCart] = null;
                 return RedirectToAction("OrderComplete");
             }
             else if(deletedProductID != null)
