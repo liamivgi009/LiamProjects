@@ -63,8 +63,8 @@
 .lineMaster {
     background-image: url('../Images/Point.png');
     background-repeat: repeat-x;
-    background-position:bottom;
-    margin-left: 23%;
+    background-position: bottom;
+    margin-left: 15%;
     width: 1300px;
 }
 
@@ -73,7 +73,7 @@
 }
 
 .imageLogo {
-    margin-bottom: -2.92%;
+    margin-bottom: -2.3%;
 }
 .ProductTitle {
     margin-top:-2%;
