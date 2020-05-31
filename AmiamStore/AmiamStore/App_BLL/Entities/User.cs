@@ -10,6 +10,6 @@ namespace AmiamStore.App_BLL.Entities
         public string Email { get; set; }
         public string Password { get; set; }
         public int UserType { get; set; }
-        public bool ConfirmEmail { get; set; }
+        public string Name { get; set; }
     }
 }

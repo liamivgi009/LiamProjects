@@ -54,7 +54,7 @@ namespace AmiamStore
             [WebMethod]
             public double DiscountForMasterCardClients(string creditCardNumber, double amountToPay)
             {
-                if (_paymentManager.IsMasterCardHolder(creditCardNumber))
+                if (GetCardType(creditCardNumber) == "MasterCard")
                 {
                     double UpdatedAmountToPay = ((amountToPay * 10) / 100);
                     return (amountToPay - UpdatedAmountToPay);
@@ -104,8 +104,14 @@ namespace AmiamStore
             SmtpServer.Port = 587;
             SmtpServer.Credentials = new System.Net.NetworkCredential("AmiamStore@gmail.com", "vm0547788384");
             SmtpServer.EnableSsl = true;
-
-            SmtpServer.Send(mail);
+            try
+            {
+                SmtpServer.Send(mail);
+            }
+            catch(Exception e) 
+            { 
+                //handle
+            }
         }
            [WebMethod]
            public string GetCardType(string creditCardNumber)

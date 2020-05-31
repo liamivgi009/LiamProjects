@@ -42,7 +42,7 @@ else
                     <td>@(String.Format("{0:N0}", cart.product.ProductPrice * cart.Quantity))</td>
                     <td>
                         @Html.ActionLink("מחק", "Delete", "ShoppingCart", new { id = cart.product.ProductID, @class = "Delete" },
-    new { onclick = "return confirm ('אתה בטוח שאתה רוצה למחוק את המוצר?')" })
+   new { onclick = "return confirm ('אתה בטוח שאתה רוצה למחוק את המוצר?')" })
                     </td>
                 </tr>
             }

@@ -39,7 +39,8 @@ namespace AmiamStore.Controllers
                 {
                     Email = model.Email,
                     Password = model.Password,
-                    UserType = (int)UserType.Client
+                    UserType = (int)UserType.Client,
+                    Name = model.Name
                 };
                 Customer customer = new Customer()
                 {
