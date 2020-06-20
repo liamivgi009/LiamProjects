@@ -54,11 +54,12 @@
 
         @if (currentUser != null)
         {
-            <span>Hello @currentUser.Name</span>
+
             <a href="~/Login/Logout" class="RegisterIcon" style="text-decoration:none">
                 <i class="fas fa-user-plus"></i>
                 <span>התנתק</span>
             </a>
+            <span class="HelloUserName">Hello @currentUser.Name</span>
         }
     </div>
     <div class="RenderBody">

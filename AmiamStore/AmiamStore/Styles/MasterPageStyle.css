@@ -10,12 +10,18 @@
     margin-top:-17px;
     margin-left:-420px;
 }
-.body{text-align:center;}
+.HelloUserName{
+    margin-left:0.5%;
+    text-decoration:underline
+}
+.body {
+    text-align: center;
+}
 .loginIcon{display:inline-block;margin-left:10px;color:black;}
 .Shoop{color:black;}
 .div2 {
     display:block;
-    margin-top: -65px;
+    margin-top: -85px;
     margin-left: -430px;
     margin-bottom:5%;
 }

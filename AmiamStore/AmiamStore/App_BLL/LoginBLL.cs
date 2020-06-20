@@ -44,12 +44,12 @@ namespace AmiamStore.App_BLL
 
         }
 
-        public User GetSingleUser(string userName, string password,string name)
+        public User GetSingleUser(string userName, string password,string Name)
         {
             var users = GetUsers();
             try
             {
-                return users.Single(u => u.Email == userName && u.Password == password && u.Name == name);
+                return users.Single(u => u.Email == userName && u.Password == password);
             }
             catch
             {
@@ -62,8 +62,12 @@ namespace AmiamStore.App_BLL
         {
             CustomersRepository rep = new CustomersRepository();
             DataTable dt = rep.GetCustomers();
-            //פעולה שמקבלת שם משתמש ומחזירה את השם הפרטי שלו
-
+            foreach(DataRow row in dt.Rows)
+            {
+                if (row["CustomerEmailAdress"].ToString() == userName)
+                    return row["CustomerName"].ToString();
+            }
+            return "UserNameNotExcist";
         }
     }
 }
