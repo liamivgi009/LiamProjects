@@ -81,6 +81,8 @@ namespace AmiamStore.PaymentApp_DAL
         }
         public int GetSpacificLine(DataTable dt)
         {
+            if (dt.Rows[0][0] == null)
+                return 0;
             int x = (int)dt.Rows[0][0];
             return x;
         }
